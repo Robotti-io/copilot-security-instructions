@@ -1,0 +1,28 @@
+name: Markdown Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+        
+
+jobs:
+  markdown-lint:
+    runs-on: [Linux]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Clear npm cache
+        run: npm cache clean --force
+
+      - name: Install markdownlint-cli
+        run: npm install
+
+      - name: Run markdownlint
+        run: npm run lint
