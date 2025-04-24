@@ -15,6 +15,7 @@ This Copilot configuration includes:
   - ☕ Java
   - 🟩 Node.js
   - 🟦 C#
+  - 🐍 Python
 - **"Do Not Suggest" lists** to block risky Copilot completions (e.g. `eval`, inline SQL, insecure deserialization)
 - **AI hallucination protections** (package spoofing, non-existent APIs, misinformation risks)
 - **Mentorship-style dev tips** to help newer engineers build safe habits over time
@@ -74,9 +75,10 @@ To run a test:
 
 ## 📚 Languages Supported
 
-- Java (Spring, Jakarta, JDBC)
-- Node.js (Express, `pg`, `mongoose`)
-- C# (.NET, Razor, ASP.NET Core)
+- ☕ **Java** — Spring, Jakarta, JDBC, OWASP Encoder
+- 🟩 **Node.js** — Express, `pg`, `mongoose`, `helmet`, `ajv`, `zod`
+- 🟦 **C#** — ASP.NET Core, Razor, ADO.NET, Entity Framework
+- 🐍 **Python** — Flask, Django, `SQLAlchemy`, `pydantic`, `Jinja2`, `bcrypt`, `cryptography`
 
 ---
 
