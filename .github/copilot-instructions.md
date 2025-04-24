@@ -22,7 +22,7 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Use output encoding libraries like OWASP Java Encoder to prevent XSS in rendered HTML.
 - Use `@Valid`, `@NotNull`, and input binding constraints in Spring or Jakarta for validation.
 - Avoid `Runtime.exec()` or `ProcessBuilder` with unsanitized input — prefer safe APIs.
-- Default to OWASP Secure Coding Practices — https://owasp.org/www-project-secure-coding-practices
+- Default to OWASP Secure Coding Practices — [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices)
 - Load secrets using SDK-integrated secret managers, not `System.getenv()` or `.properties` files.
 - Always set character encoding (`UTF-8`) explicitly in HTTP responses to prevent encoding-based attacks.
 - Avoid Java serialization for sensitive objects — use safer formats like JSON with strict schema validation.
@@ -45,6 +45,18 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Use `DataAnnotations` (e.g. `[Required]`, `[StringLength]`) for input validation on models.
 - Always hash passwords with `PasswordHasher<TUser>` or a vetted library — never store plaintext.
 - Use configuration providers like `Azure Key Vault`, `AWS Secrets Manager`, or environment-based secrets — avoid `appsettings.json` for secrets.
+
+### 🐍 Python
+
+- Always validate and sanitize external input — use `pydantic`, `cerberus`, or `marshmallow` for structured validation.
+- Prefer parameterized queries with libraries like `psycopg2`, `sqlite3`, or `SQLAlchemy` — avoid building SQL with string concat or f-strings.
+- Use built-in escaping via `html.escape()` or templating engines like Jinja2 (autoescaping on!) to prevent XSS.
+- Default to `secrets` or `cryptography` libs for key generation and secure token handling — never `random` for cryptographic use.
+- Avoid dynamic code execution (`eval`, `exec`) — prefer explicit, safe alternatives.
+- Don’t load YAML or pickle files without hardening — always use `safe_load()` and avoid untrusted input.
+- Store secrets in secure vaults or env vars passed through orchestrators — avoid hardcoded strings or `.env` files in prod.
+- Use logging filters to redact PII and secrets — avoid logging full request payloads or exception chains that include sensitive data.
+- Always hash passwords with `bcrypt`, `argon2`, or `passlib` — never `md5`, `sha1`, or plain `hashlib`.
 
 ---
 
@@ -76,6 +88,16 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Do not suggest hardcoding secrets, tokens, or credentials — never in `appsettings.json`.
 - Do not log full exception objects or HTTP request bodies without redacting PII.
 - Do not disable certificate validation (`ServerCertificateValidationCallback = delegate { return true; }`) in production.
+
+### Python
+
+- Do not build SQL queries with string concat, f-strings, or `.format()` — always use parameterized queries.
+- Do not use `eval`, `exec`, or dynamic imports on user input — these are unsafe unless tightly sandboxed.
+- Do not log sensitive values (e.g. API keys, passwords) or full stack traces with PII.
+- Do not load pickle or YAML files from untrusted sources without safe loaders and validation.
+- Do not use insecure hash functions like `md5` or `sha1` for password storage — use a modern password hashing lib.
+- Do not commit `.env` files or hardcode secrets — use secrets management infrastructure.
+
 
 ---
 
