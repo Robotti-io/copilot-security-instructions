@@ -98,7 +98,6 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Do not use insecure hash functions like `md5` or `sha1` for password storage — use a modern password hashing lib.
 - Do not commit `.env` files or hardcode secrets — use secrets management infrastructure.
 
-
 ---
 
 ## 🧠 4. AI-Generated Code Safety
