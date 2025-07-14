@@ -26,7 +26,7 @@ You are a senior software engineer performing a **comprehensive secure code revi
 
 ---
 
-🛡️ **Step 3: Deep Review by Subsystem**
+## 🛡️ **Step 3: Deep Review by Subsystem**
 For each subsystem:
 
 - Highlight strengths
