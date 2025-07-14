@@ -44,14 +44,14 @@ Copilot will scan the file using the selected prompt and return flagged issues, 
 
 The `tests/` folder contains small, focused files designed to trigger specific security prompts:
 
-| File                           | Targets                                  |
-|--------------------------------|------------------------------------------|
-| `secret-hardcode.js`           | check-for-secrets.md                    |
-| `unvalidated-input.java`       | validate-input-handling.md              |
-| `insecure-api.cs`              | scan-for-insecure-apis.md               |
-| `logs-sensitive-data.go`       | assess-logging.md                       |
-| `weak-auth-flow.ts`            | review-auth-flows.md                    |
-| `overtrusted-genai-snippet.js` | unvalidated-genai-acceptances.md        |
+| File                           | Targets                           |
+|--------------------------------|-----------------------------------|
+| `secret-hardcode.js`           | check-for-secrets.md              |
+| `unvalidated-input.java`       | validate-input-handling.md        |
+| `insecure-api.cs`              | scan-for-insecure-apis.md         |
+| `logs-sensitive-data.go`       | assess-logging.md                 |
+| `weak-auth-flow.ts`            | review-auth-flows.md              |
+| `overtrusted-genai-snippet.js` | unvalidated-genai-acceptances.md  |
 
 To run a test:
 
