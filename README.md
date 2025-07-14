@@ -24,7 +24,7 @@ This Copilot configuration includes:
 
 ## 🧠 Using Prompts for Code Reviews (Copilot Chat)
 
-If your organization has [Copilot Prompt Customization](https://docs.github.com/en/copilot/customizing-github-copilot/prompts-for-github-copilot#using-reusable-prompts) enabled, you can guide Copilot Chat to run secure code audits using the included prompt files.
+If your organization has [Copilot Prompt Customization](https://code.visualstudio.com/docs/copilot/copilot-customization#_prompt-files-experimental) enabled, you can guide Copilot Chat to run secure code audits using the included prompt files.
 
 1. Open any file in your IDE (e.g., `tests/secret-hardcode.js`)
 2. Open the Copilot Chat sidebar
