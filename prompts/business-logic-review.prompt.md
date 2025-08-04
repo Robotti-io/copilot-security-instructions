@@ -45,6 +45,7 @@ If possible, include a **linear narrative or bullet chain** of how a typical req
   - Are user roles, permissions, or state transitions clearly enforced?
 
 Note any areas where logic could be:
+
 - Extracted for clarity
 - Consolidated
 - Better tested or documented
