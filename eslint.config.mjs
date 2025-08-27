@@ -7,6 +7,7 @@ export default defineConfig([
   // Ignored files & folders
   globalIgnores([
     'node_modules',
+    'tests',
   ]),
   // Linting rules
   {
