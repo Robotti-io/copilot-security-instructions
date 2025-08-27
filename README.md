@@ -19,6 +19,7 @@ This Copilot configuration includes:
 - **"Do Not Suggest" lists** to block risky Copilot completions (e.g. `eval`, inline SQL, insecure deserialization)
 - **AI hallucination protections** (package spoofing, non-existent APIs, misinformation risks)
 - **Mentorship-style dev tips** to help newer engineers build safe habits over time
+- **An MCP server** to make using these prompts in other projects easier
 
 ---
 
@@ -37,8 +38,6 @@ If your organization has [Copilot Prompt Customization](https://code.visualstudi
 Copilot will scan the file using the selected prompt and return flagged issues, reasoning, and remediation tips.
 
 > ℹ️ Note: If your org disables `chat.promptFiles`, you can manually paste the prompt contents into Copilot Chat or use them in PRs, checklists, and reviews.
-
----
 
 ## 🧪 Testing the Prompts
 
@@ -63,6 +62,8 @@ To run a test:
 
 ## 📦 How to Use in a Real Project
 
+### Static Files
+
 1. Copy the `copilot-instructions.md` file into your repo under:  
    `.github/copilot-instructions.md`
 
@@ -70,6 +71,49 @@ To run a test:
    `.github/prompts/`
 
 3. Use prompt-driven reviews in Copilot Chat during coding, PRs, or audits
+
+### Leveraging the included MCP Server
+
+The MCP server is designed to simplify the integration of secure coding prompts into your development workflow. Follow these steps to ensure a smooth experience:
+
+#### 1. Setting Up the MCP Server
+
+```bash
+npm install
+cp .env.example .env
+npm start
+```
+
+- **`npm install`**: Installs all required dependencies.
+- **`cp .env.example .env`**: Creates a `.env` file for configuration. Update it with your specific settings.
+- **`npm start`**: Launches the MCP server on `http://localhost:8080/mcp`.
+
+#### 2. Configuring VSCode for MCP
+
+1. Open VSCode and run the `MCP: Open User Configuration` command.
+2. Add the following JSON configuration:
+
+   ```json
+   {
+      "servers": {
+         "copilot-instructions-mcp": {
+            "url": "http://localhost:8080/mcp"
+         }
+      }
+   }
+   ```
+
+3. Save the configuration.
+4. Navigate to the Extensions menu in VSCode.
+5. Locate the `copilot-instructions-mcp` server, click the settings cog, and select `start server`.
+
+#### 3. Using MCP with GitHub Copilot
+
+- Open GitHub Copilot Chat.
+- Ask it to run any of the prompts against your repository or specific files.
+- Example: `Please requst and run the secure code review prompt using the`.
+
+This setup ensures developers can easily leverage the MCP server to enhance their secure coding practices.
 
 ---
 
