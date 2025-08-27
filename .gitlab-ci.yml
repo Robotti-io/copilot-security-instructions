@@ -1,0 +1,19 @@
+image: node:lts
+
+stages:
+  - lint
+  # - test
+  # - security
+  # - build
+  # - deploy
+
+# ---- Linting Stage ----
+# This stage runs linting checks on the codebase to ensure code quality and consistency.
+lint:
+  stage: lint
+  allow_failure: false
+  script:
+    - npm install
+    - npm run lint
+
+

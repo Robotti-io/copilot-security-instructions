@@ -1,8 +1,63 @@
 {
-  "scripts": {
-    "lint": "markdownlint **/*.md"
+  "name": "copilot-instructions-mcp",
+  "version": "1.0.0",
+  "description": "A collection os security focused prompts and instructions paired with an mcp server for easy integration into GitHub Copilot",
+  "main": "index.js",
+  "engine": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
   },
+  "exports": {
+    "./core": "./src/core/index.js",
+    "./mcp_prompts": "./src/mcp_prompts/index.js",
+    "./mcp_resources": "./src/mcp_resources/index.js",
+    "./mcp_tools": "./src/mcp_tools/index.js",
+    "./middlewares": "./src/middlewares/index.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "lint": "npm run lint:eslint && npm run lint:markdown",
+    "lint:fix": "npm run lint:eslint:fix && npm run lint:markdown:fix",
+    "lint:eslint": "eslint .",
+    "lint:eslint:fix": "eslint . --fix",
+    "lint:markdown": "markdownlint .",
+    "lint:markdown:fix": "markdownlint . --fix"
+  },
+  "keywords": [
+    "robotti",
+    "mcp",
+    "modelcontext",
+    "framework",
+    "emotional-sync",
+    "rvct",
+    "process-corner",
+    "reflection",
+    "resonance",
+    "co-creation",
+    "nodejs"
+  ],
+  "author": "Robotti Tech Services",
+  "license": "ISC",
   "dependencies": {
-    "markdownlint-cli": "^0.44.0"
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "ajv": "^8.17.1",
+    "amqplib": "^0.10.8",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3",
+    "sequelize": "^6.37.7",
+    "ulid": "^3.0.1",
+    "winston": "^3.17.0",
+    "winston-transport": "^4.9.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^16.3.0",
+    "markdownlint-cli": "^0.45.0",
+    "nodemon": "^3.1.10"
   }
 }
