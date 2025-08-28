@@ -1,3 +1,5 @@
+[![MSeeP.ai Security Assessment Badge](https://mseep.net/pr/robotti-io-copilot-security-instructions-badge.png)](https://mseep.ai/app/robotti-io-copilot-security-instructions)
+
 # 🛡️ CoPilot Security Instructions
 
 A customizable `.github/copilot-instructions.md` file that guides **GitHub Copilot** toward **secure coding defaults** across **Java, Node.js, and C#**.
