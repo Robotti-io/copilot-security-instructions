@@ -1,5 +1,7 @@
 # 🛡️ CoPilot Security Instructions
 
+[![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/1a935343-666d-457a-b210-2e0d27e9ef81)
+
 A customizable `.github/copilot-instructions.md` file that guides **GitHub Copilot** toward **secure coding defaults** across **Java, Node.js, and C#**.
 
 Designed for security-conscious development teams, this config helps Copilot suggest safer code patterns, avoid common vulnerabilities, and reinforce good practices — without slowing down your workflow.
