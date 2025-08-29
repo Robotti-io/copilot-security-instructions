@@ -39,6 +39,22 @@ Copilot will scan the file using the selected prompt and return flagged issues, 
 
 > ℹ️ Note: If your org disables `chat.promptFiles`, you can manually paste the prompt contents into Copilot Chat or use them in PRs, checklists, and reviews.
 
+## 🗂️ Prompt Catalogue
+
+Explore the available prompt files and their intended purpose:
+
+| Prompt | Description | Intended Use |
+| --- | --- | --- |
+| [assess-logging.prompt.md](prompts/assess-logging.prompt.md) | Identify unsafe logging and exposure of sensitive data. | Audit log output for leaks and recommend safer patterns. |
+| [business-logic-review.prompt.md](prompts/business-logic-review.prompt.md) | Analyze overall business logic flow and decision making. | Map application behaviour and critique critical logic paths. |
+| [check-access-controls.prompt.md](prompts/check-access-controls.prompt.md) | Audit authorization and access control weaknesses. | Ensure RBAC/ABAC enforcement and consistent permission checks. |
+| [check-for-secrets.prompt.md](prompts/check-for-secrets.prompt.md) | Detect hardcoded secrets and credentials. | Locate embedded keys or tokens and suggest secure storage. |
+| [check-for-unvalidated-genai-acceptances.prompt.md](prompts/check-for-unvalidated-genai-acceptances.prompt.md) | Find unvalidated AI-generated code or hallucinated assets. | Verify that AI suggestions are real, tested, and documented. |
+| [review-auth-flows.prompt.md](prompts/review-auth-flows.prompt.md) | Evaluate authentication logic and session handling. | Review login flows for common risks and best practices. |
+| [scan-for-insecure-apis.prompt.md](prompts/scan-for-insecure-apis.prompt.md) | Spot deprecated or insecure API usage. | Replace risky APIs with modern, safer alternatives. |
+| [secure-code-review.prompt.md](prompts/secure-code-review.prompt.md) | Perform a comprehensive security review of the codebase. | Conduct an end-to-end audit for security issues. |
+| [validate-input-handling.prompt.md](prompts/validate-input-handling.prompt.md) | Check for missing or unsafe input validation. | Evaluate request handling for validation and sanitization gaps. |
+
 ## 🧪 Testing the Prompts
 
 The `tests/` folder contains small, focused files designed to trigger specific security prompts:
@@ -88,6 +104,31 @@ npm start
 - **`cp .env.example .env`**: Creates a `.env` file for configuration. Update it with your specific settings.
 - **`npm start`**: Launches the MCP server on `http://localhost:8080/mcp`.
 
+#### Environment Variables
+
+The MCP server reads configuration from a `.env` file. The following variables can be set:
+
+| Variable | Description | Default | Required |
+| --- | --- | --- | --- |
+| `server.port` | Port the MCP server listens on. | `8080` | Optional |
+| `server.hostname` | Hostname the server binds to. | `localhost` | Optional |
+| `logger.transports.console.enabled` | Enable console logging output. | `false` | Optional |
+| `logger.transports.console.level` | Log level for console output. | `info` | Optional |
+| `logger.transports.amqp.enabled` | Enable AMQP-based logging. | `false` | Optional |
+| `logger.transports.amqp.level` | Log level for AMQP transport. | `http` | Optional |
+| `logger.transports.amqp.hostname` | Hostname of the AMQP broker. | `localhost` | Optional |
+| `logger.transports.amqp.port` | Port for the AMQP broker. | `5672` | Optional |
+| `logger.transports.amqp.username` | Username for AMQP authentication. | `guest` | Optional |
+| `logger.transports.amqp.password` | Password for AMQP authentication. | `guest` | Optional |
+| `logger.transports.amqp.exchange` | Exchange name used for AMQP logging. | `logs` | Optional |
+| `logger.transports.amqp.vhost` | Virtual host for AMQP logging. | `/logs` | Optional |
+| `logger.transports.amqp.heartbeat` | Heartbeat interval in seconds. | `60` | Optional |
+| `logger.transports.amqp.locale` | Locale for the AMQP connection. | `en_US` | Optional |
+| `logger.transports.amqp.type` | AMQP exchange type. | `direct` | Optional |
+| `logger.transports.amqp.durable` | Whether the AMQP exchange is durable. | `false` | Optional |
+
+All variables are optional; the server runs with these defaults. Set them in `.env` to customize behavior or enable logging transports.
+
 #### 2. Configuring VSCode for MCP
 
 1. Open VSCode and run the `MCP: Open User Configuration` command.
@@ -111,7 +152,7 @@ npm start
 
 - Open GitHub Copilot Chat.
 - Ask it to run any of the prompts against your repository or specific files.
-- Example: `Please requst and run the secure code review prompt using the`.
+- Example: `Please request and run the secure code review prompt using the MCP server.`
 
 This setup ensures developers can easily leverage the MCP server to enhance their secure coding practices.
 
@@ -123,6 +164,21 @@ This setup ensures developers can easily leverage the MCP server to enhance thei
 - 🟩 **Node.js** — Express, `pg`, `mongoose`, `helmet`, `ajv`, `zod`
 - 🟦 **C#** — ASP.NET Core, Razor, ADO.NET, Entity Framework
 - 🐍 **Python** — Flask, Django, `SQLAlchemy`, `pydantic`, `Jinja2`, `bcrypt`, `cryptography`
+
+---
+
+## 🛠️ Development
+
+Use these npm scripts to work on the project:
+
+| Command | Description |
+| --- | --- |
+| `npm start` | Launches the MCP server on `http://localhost:8080/mcp`. |
+| `npm run dev` | Starts the server with live reload via `nodemon`. |
+| `npm run lint` | Runs ESLint and Markdownlint to verify code and docs. |
+| `npm run lint:fix` | Attempts to automatically fix linting issues. |
+
+**Recommended workflow:** run `npm run lint` (and `npm run lint:fix` if needed) before committing or opening a PR.
 
 ---
 
