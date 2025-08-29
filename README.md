@@ -152,7 +152,7 @@ All variables are optional; the server runs with these defaults. Set them in `.e
 
 - Open GitHub Copilot Chat.
 - Ask it to run any of the prompts against your repository or specific files.
-- Example: `Please requst and run the secure code review prompt using the`.
+- Example: `Please request and run the secure code review prompt using the MCP server.`
 
 This setup ensures developers can easily leverage the MCP server to enhance their secure coding practices.
 
