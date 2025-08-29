@@ -104,6 +104,31 @@ npm start
 - **`cp .env.example .env`**: Creates a `.env` file for configuration. Update it with your specific settings.
 - **`npm start`**: Launches the MCP server on `http://localhost:8080/mcp`.
 
+#### Environment Variables
+
+The MCP server reads configuration from a `.env` file. The following variables can be set:
+
+| Variable | Description | Default | Required |
+| --- | --- | --- | --- |
+| `server.port` | Port the MCP server listens on. | `8080` | Optional |
+| `server.hostname` | Hostname the server binds to. | `localhost` | Optional |
+| `logger.transports.console.enabled` | Enable console logging output. | `false` | Optional |
+| `logger.transports.console.level` | Log level for console output. | `info` | Optional |
+| `logger.transports.amqp.enabled` | Enable AMQP-based logging. | `false` | Optional |
+| `logger.transports.amqp.level` | Log level for AMQP transport. | `http` | Optional |
+| `logger.transports.amqp.hostname` | Hostname of the AMQP broker. | `localhost` | Optional |
+| `logger.transports.amqp.port` | Port for the AMQP broker. | `5672` | Optional |
+| `logger.transports.amqp.username` | Username for AMQP authentication. | `guest` | Optional |
+| `logger.transports.amqp.password` | Password for AMQP authentication. | `guest` | Optional |
+| `logger.transports.amqp.exchange` | Exchange name used for AMQP logging. | `logs` | Optional |
+| `logger.transports.amqp.vhost` | Virtual host for AMQP logging. | `/logs` | Optional |
+| `logger.transports.amqp.heartbeat` | Heartbeat interval in seconds. | `60` | Optional |
+| `logger.transports.amqp.locale` | Locale for the AMQP connection. | `en_US` | Optional |
+| `logger.transports.amqp.type` | AMQP exchange type. | `direct` | Optional |
+| `logger.transports.amqp.durable` | Whether the AMQP exchange is durable. | `false` | Optional |
+
+All variables are optional; the server runs with these defaults. Set them in `.env` to customize behavior or enable logging transports.
+
 #### 2. Configuring VSCode for MCP
 
 1. Open VSCode and run the `MCP: Open User Configuration` command.
