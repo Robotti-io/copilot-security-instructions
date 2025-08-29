@@ -167,6 +167,21 @@ This setup ensures developers can easily leverage the MCP server to enhance thei
 
 ---
 
+## 🛠️ Development
+
+Use these npm scripts to work on the project:
+
+| Command | Description |
+| --- | --- |
+| `npm start` | Launches the MCP server on `http://localhost:8080/mcp`. |
+| `npm run dev` | Starts the server with live reload via `nodemon`. |
+| `npm run lint` | Runs ESLint and Markdownlint to verify code and docs. |
+| `npm run lint:fix` | Attempts to automatically fix linting issues. |
+
+**Recommended workflow:** run `npm run lint` (and `npm run lint:fix` if needed) before committing or opening a PR.
+
+---
+
 ## 📣 Feedback & Contributions
 
 This project is community-friendly and designed for continuous improvement.  
