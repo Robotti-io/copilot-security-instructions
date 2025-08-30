@@ -1,3 +1,5 @@
+[![MSeeP.ai Security Assessment Badge](https://mseep.net/pr/robotti-io-copilot-security-instructions-badge.png)](https://mseep.ai/app/robotti-io-copilot-security-instructions)
+
 # 🛡️ CoPilot Security Instructions
 
 [![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/1a935343-666d-457a-b210-2e0d27e9ef81)
