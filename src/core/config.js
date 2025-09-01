@@ -7,7 +7,7 @@ const server = {
   hostname: process.env['server.hostname'] || 'localhost',
   ssl: process.env['server.ssl'] === 'true' || false,
   'ssl.pfx': process.env['server.ssl.pfx'] || 'localhost.pfx',
-  'ssl.pfxPassphrase': process.env['server.ssl.pfxPassphrase'] || 'PFX_PASSPHRASE',
+  'ssl.pfx.passphrase': process.env['server.ssl.pfx.passphrase'] || 'PFX_PASSPHRASE',
 };
 
 const logger = {
