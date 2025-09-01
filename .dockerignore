@@ -1,0 +1,13 @@
+.env
+.git
+.github
+.gitignore
+*.pfx
+node_modules
+tests
+Dockerfile
+renovate.json
+eslint.config.mjs
+copilot-instructions.node_modules.gitlab-ci.yml
+.markdownlint.yml
+.markdownlintignore

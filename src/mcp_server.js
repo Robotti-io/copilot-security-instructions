@@ -7,10 +7,13 @@ import mcpTools from 'copilot-instructions-mcp/mcp_tools';
 
 function makeMCPServer() {
   const server = new McpServer({
-    name: 'copilot-instructions-mcp',
+    name: 'copilot-security-mcp',
     version: '1.0.0',
+    title: 'Copilot Security Instructions MCP',
+
   });
 
+  // Register Tools
   mcpTools.list_resources(server);
   mcpTools.list_prompts(server);
   mcpTools.get_prompt(server);
