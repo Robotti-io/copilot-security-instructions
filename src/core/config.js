@@ -5,6 +5,9 @@ dotenv.config({ quiet: true });
 const server = {
   port: process.env['server.port'] ? parseInt(process.env['server.port'], 10) : 8080,
   hostname: process.env['server.hostname'] || 'localhost',
+  ssl: process.env['server.ssl'] === 'true' || false,
+  'ssl.pfx': process.env['server.ssl.pfx'] || 'localhost.pfx',
+  'ssl.pfx.passphrase': process.env['server.ssl.pfx.passphrase'] || 'PFX_PASSPHRASE',
 };
 
 const logger = {

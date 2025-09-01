@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
   return res.status(200).send(homeHTML);
 });
 
+app.get('/health', (req, res) => res.status(200).send('OK'));
+
 app.get('/mcp', (req, res) => {
   // TODO: Log request details
   /** TODO: Implement MCP Server GET Specification
