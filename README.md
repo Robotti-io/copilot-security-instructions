@@ -42,7 +42,6 @@ Explore the available prompts and their intended use cases:
 | [secure-code-review.prompt.md](prompts/secure-code-review.prompt.md) | Perform a comprehensive security review of the codebase. | Conduct an end-to-end audit for security issues. |
 | [validate-input-handling.prompt.md](prompts/validate-input-handling.prompt.md) | Check for missing or unsafe input validation. | Evaluate request handling for validation and sanitization gaps. |
 
-
 ---
 
 ## 📦 How to Use in a Real Project
