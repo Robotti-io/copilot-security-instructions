@@ -1,13 +1,15 @@
-.env
+<!-- Directories -->
 .git
 .github
-.gitignore
-*.pfx
 node_modules
 tests
+
+<!-- Files -->
+.gitignore
+.env
 Dockerfile
 renovate.json
 eslint.config.mjs
-copilot-instructions.node_modules.gitlab-ci.yml
+.gitlab-ci.yml
 .markdownlint.yml
 .markdownlintignore
