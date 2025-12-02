@@ -86,7 +86,7 @@ The MCP server simplifies the integration of secure coding prompts into your wor
    > | Variable | Description | Default |
    > | --- | --- | --- |
    > | `server.port` | Port the MCP server listens on. | `8080` |
-   > | `server.ssl`| Whether to use ssl for express server | `false` |
+   > | `server.ssl` | Whether to use ssl for express server | `false` |
    > | `server.ssl.pfx` | Path to pfx file | `localhost.pfx` |
    > | `server.ssl.pfx.passphrase` | Passphrase for pfx file | `PFX_PASSPHRASE` |
    > | `server.hostname` | Hostname the server binds to. | `localhost` |
