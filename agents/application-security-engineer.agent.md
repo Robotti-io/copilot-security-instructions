@@ -1,6 +1,6 @@
 ---
 name: application-security-engineer
-description: Fixes application security issues end-to-end: root-cause analysis, code changes, tests, and safe-by-default patterns.
+description: Fixes application security issues end-to-end root-cause analysis, code changes, tests, and safe-by-default patterns.
 tools: ["read","search","edit","execute"]
 ---
 
