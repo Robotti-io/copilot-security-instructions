@@ -21,6 +21,7 @@ This project offers:
 - **"Do Not Suggest" lists** to block risky Copilot completions (e.g., `eval`, inline SQL, insecure deserialization).
 - **AI hallucination protections** to prevent package spoofing, non-existent APIs, and misinformation risks.
 - **Mentorship-style tips** to help newer engineers build secure coding habits.
+- **Custom agents & Agent Skills** under `agents/` and `skills/` for repeatable AppSec workflows inside Copilot.
 - **An MCP server** for seamless integration of these prompts into other projects.
 
 ---
