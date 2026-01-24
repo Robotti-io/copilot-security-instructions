@@ -1,6 +1,6 @@
-# 🤖 Copilot Secure Defaults for Java, Node.js, and C# Projects
+# 🤖 Copilot Secure Defaults for Java, Node.js, C#, and Python Projects
 
-These instructions guide GitHub Copilot to suggest secure, intentional code patterns for Java, Node.js, and C# development — especially in enterprise or team settings. Prioritize clarity, validation, and the principle of least surprise.
+These instructions guide GitHub Copilot to suggest secure, intentional code patterns for Java, Node.js, C#, and Python development — especially in enterprise or team settings. Prioritize clarity, validation, and the principle of least surprise.
 
 ---
 
@@ -9,7 +9,7 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Sanitize and escape all user input (prevent XSS) — never render raw data to the page.
 - Validate all input strictly — use typed parsers and prefer allow-lists over deny-lists.
 - Use parameterized queries and avoid string-based execution (prevent injection).
-- Never store secrets in code or env files — use a secure vault (e.g. CyberArk Conjur, Azure Key Vault).
+- Never commit secrets to source control (including `.env` files). Use a secure vault/secret manager (e.g. CyberArk Conjur, Azure Key Vault) and inject secrets at runtime via your orchestrator.
 - Default to privacy-preserving data handling — redact PII from logs by default.
 
 ---

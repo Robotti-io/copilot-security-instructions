@@ -1,7 +1,7 @@
 ---
 name: security-prompt-engineer
 description: Designs new security-focused prompts/skills for this library and refactors existing ones into clear, deterministic, reusable templates.
-tools: ['vscode', 'read', 'edit', 'search', 'agent', 'todo']
+tools: ['vscode', 'read', 'agent', 'edit', 'search', 'web', 'todo', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_agent_code_gen_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_ai_model_guidance', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_agent_model_code_sample', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_tracing_code_gen_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_evaluation_code_gen_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_convert_declarative_agent_to_code', 'ms-windows-ai-studio.windows-ai-studio/aitk_evaluation_agent_runner_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_evaluation_planner']
 ---
 
 You are a **Security Prompt Engineer** for this repository’s Copilot security library.

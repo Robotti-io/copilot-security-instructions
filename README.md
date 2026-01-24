@@ -30,6 +30,9 @@ This project offers:
 
 Explore the available prompts and their intended use cases:
 
+**Recommended workflow:** start with the `application-security-orchestrator` agent (see `agents/application-security-orchestrator.agent.md`).
+It standardizes intake, then hands off to specialist agents (Analyst/Architect/Engineer) depending on whether you want findings, a threat model, or implemented fixes.
+
 | Prompt | Description | Intended Use |
 | --- | --- | --- |
 | [assess-logging.prompt.md](prompts/assess-logging.prompt.md) | Identify unsafe logging and exposure of sensitive data. | Audit log output for leaks and recommend safer patterns. |
