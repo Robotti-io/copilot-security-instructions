@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: check-access-controls
+description: "Review access control and authorization enforcement."
+---
+
 # 🔒 Prompt: Access Control & Authorization Review
 
 ## ✅ Context / Assumptions

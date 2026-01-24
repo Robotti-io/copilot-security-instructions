@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: scan-for-insecure-apis
+description: "Scan for insecure or deprecated API usage and suggest safer alternatives."
+---
+
 # ⚠️ Prompt: Insecure or Deprecated API Usage Scan
 
 ## ✅ Context / Assumptions

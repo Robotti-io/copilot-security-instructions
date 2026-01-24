@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: review-auth-flows
+description: "Review authentication flows for common weaknesses and mitigations."
+---
+
 # 🧪 Prompt: Authentication Flow Review
 
 ## ✅ Context / Assumptions

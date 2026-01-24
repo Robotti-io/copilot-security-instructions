@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: validate-input-handling
+description: "Audit input validation and sanitization boundaries and risks."
+---
+
 # 🛡️ Prompt: Input Validation & Sanitization Audit
 
 ## ✅ Context / Assumptions

@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: check-for-secrets
+description: "Scan for hardcoded secrets and credential leakage patterns."
+---
+
 # 🔐 Prompt: Hardcoded Secrets & Credential Audit
 
 ## ✅ Context / Assumptions

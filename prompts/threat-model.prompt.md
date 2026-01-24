@@ -1,3 +1,9 @@
+---
+agent: "application-security-architect"
+name: threat-model
+description: "Threat model the system using the 4Q framework and produce actionable artifacts."
+---
+
 # Prompt: 4Q Threat Model
 
 *A pragmatic spec + prompt kit to make the “agentic threat modeler” real in your workflow.*

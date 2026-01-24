@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: assess-logging
+description: "Audit logging for sensitive data exposure."
+---
+
 # 🕵️ Prompt: Logging & Sensitive Data Exposure Audit
 
 ## ✅ Context / Assumptions

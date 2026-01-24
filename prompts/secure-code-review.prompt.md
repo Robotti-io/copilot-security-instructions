@@ -1,3 +1,9 @@
+---
+agent: "application-security-architect"
+name: secure-code-review
+description: "Perform a comprehensive secure code review and report prioritized findings."
+---
+
 # 🛡️ Prompt: Secure Code Review
 
 You are a senior software engineer performing a **comprehensive secure code review**.

@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: business-logic-review
+description: "Analyze business logic flows and identify security/correctness risks."
+---
+
 # 🧠 Prompt: Business Logic Flow Analysis
 
 You are a senior software engineer performing a **multi-stage review of application behavior and business logic flow**.

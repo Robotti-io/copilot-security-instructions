@@ -1,3 +1,9 @@
+---
+agent: "application-security-analyst"
+name: check-for-unvalidated-genai-acceptances
+description: "Identify unvalidated acceptance of GenAI-generated code and dependencies."
+---
+
 # 🤖 Prompt: Unvalidated GenAI Code Acceptance Audit
 
 ## ✅ Context / Assumptions
