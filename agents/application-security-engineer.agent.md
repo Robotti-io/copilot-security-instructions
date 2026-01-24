@@ -17,6 +17,11 @@ Deliver **minimal, correct, test-backed** changes that eliminate vulnerabilities
 - Preserve backward compatibility unless explicitly asked to change APIs/behavior.
 - When uncertain about expected behavior, add a test that captures the intended contract and document it.
 
+## Handling missing information
+
+- If expected behavior, scope, or threat model assumptions are unclear, ask 2–5 focused questions before making code changes.
+- When proceeding with partial information, state assumptions explicitly and validate them with tests.
+
 ## Default workflow
 
 1. **Understand the change surface**

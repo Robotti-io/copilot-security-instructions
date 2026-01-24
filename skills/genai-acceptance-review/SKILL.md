@@ -3,7 +3,16 @@ name: genai-acceptance-review
 description: Review workflow for AI/LLM output usage to prevent over-trust, injection, and unsafe automation.
 ---
 
+## When to use
+
 Use this skill when a system **consumes LLM output** to make decisions or perform actions.
+
+## Inputs to collect (if available)
+
+- What the model output is used for (advisory vs actionable)
+- Tools/capabilities available to the system (file writes, network calls, deploys)
+- Data entering prompts (PII/secrets? retrieved content sources?)
+- Approval model (human-in-the-loop? step-up auth?)
 
 ## Threats to consider
 
@@ -42,3 +51,14 @@ Use this skill when a system **consumes LLM output** to make decisions or perfor
 Related prompt:
 
 - `check-for-unvalidated-genai-acceptances.prompt.md`
+
+## Output format
+
+- **Boundary map**: where untrusted content enters, where model output leaves
+- **Threats**: top 5 with likelihood/impact
+- **Controls**: prevent/detect/respond mapped to advisory vs actionable use
+- **Validation**: misuse/prompt-injection test scenarios
+
+## Examples
+
+- “LLM suggests shell commands that CI executes” → require allow-listed command templates + schema validation + human approval for privileged operations.

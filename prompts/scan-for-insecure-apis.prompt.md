@@ -1,20 +1,36 @@
+---
+agent: "application-security-analyst"
+name: scan-for-insecure-apis
+description: "Scan for insecure or deprecated API usage and suggest safer alternatives."
+---
+
 # ⚠️ Prompt: Insecure or Deprecated API Usage Scan
 
-Act as a secure code auditor. Your goal is to identify any usage of **insecure, deprecated, or high-risk APIs** that may introduce vulnerabilities or future instability.
+## ✅ Context / Assumptions
 
-Look for and flag the following patterns:
+- You can read project files in this workspace.
+- Prefer evidence-first: cite file paths and (when possible) line ranges.
+- Do **not** modify files; report findings and safer alternatives only.
 
-- Use of deprecated cryptographic functions (e.g. MD5, SHA1, `crypto.createCipher`, `System.Security.Cryptography.SHA1CryptoServiceProvider`)
-- Legacy input/output APIs that lack sanitization or encoding features
-- Insecure deserialization functions (e.g. `eval`, `JSON.parse` on external input, `ObjectInputStream`, `BinaryFormatter`)
-- Unsafe file access or shell execution APIs (`fs.readFileSync` on user input, `Runtime.exec`, `ProcessBuilder`, `child_process.exec`)
-- Unverified third-party libraries or packages not pinned to versions
-- APIs that allow insecure HTTP communication (e.g. `http.get`, `fetch` without TLS, `WebClient` without `UseHttps`)
+## 🔍 Procedure
 
-Explain:
+1. Search for high-risk APIs across languages/frameworks in the repo.
+2. For each usage, determine:
+    - is input attacker-controlled?
+    - what is the sink/impact (RCE, injection, data exposure, SSRF, DoS)?
+    - is there a safe wrapper or mitigation already?
+3. Recommend safer alternatives and explicit mitigation conditions.
 
-- Why the API is dangerous
-- What safer alternative is recommended
-- When/if it’s okay to use with proper mitigation
+## 📦 Output Format
 
-Provide annotations or refactor suggestions where applicable.
+Return Markdown with:
+
+- **Summary**: top 3 risky APIs + overall risk
+- **Findings table**: API | Risk | Severity | Where | Evidence | Safer alternative | Verification
+- **Notes**: cases where usage might be acceptable with strict mitigations (state the mitigations required)
+
+## ✅ Quality checks
+
+- Each finding explains the risk in this repo’s context, not generically.
+- Recommendations include at least one concrete safer alternative.
+- Evidence includes file paths (+ line ranges if available).

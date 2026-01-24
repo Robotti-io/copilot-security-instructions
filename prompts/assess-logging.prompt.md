@@ -1,19 +1,53 @@
+---
+agent: "application-security-analyst"
+name: assess-logging
+description: "Audit logging for sensitive data exposure."
+---
+
 # 🕵️ Prompt: Logging & Sensitive Data Exposure Audit
 
-You are reviewing application code for **unsafe logging practices**, **PII exposure**, and **improper log hygiene**.
+## ✅ Context / Assumptions
 
-Identify any of the following issues:
+- You can read project files in this workspace.
+- Prefer evidence-first: cite file paths and (when possible) line ranges for each claim.
+- Do **not** modify files; report findings and recommendations only.
+- Do not echo secrets or sensitive values in your output (redact samples).
 
-- Logging of sensitive information (e.g. passwords, tokens, API keys, session IDs)
-- Unfiltered logs that include full request/response bodies, headers, or user-submitted data
-- Logging of stack traces or exceptions without redaction or sanitization
-- Console or print statements left in production logic
-- Logs that include internal system paths, configurations, or database queries
-- Use of insecure transports for logs (e.g. writing logs to public cloud buckets without access control)
+## 🔍 Procedure
 
-Also check for:
+1. Identify logging entry points (logger wrappers, middleware, request/response logging, error handlers).
+2. Identify sensitive sources:
+    - Credentials, tokens, API keys, session IDs
+    - `Authorization`/cookies, CSRF tokens
+    - PII (emails, phone, address, IDs)
+3. Trace sources → sinks:
+    - Logs, telemetry, exception/stack traces, debug output
+4. Flag unsafe patterns:
+    - Full request/response bodies or headers without allow-listing
+    - Stack traces or exception objects that include sensitive context
+    - Console/print statements in production paths
+    - Insecure log transport or overly broad log destinations
+5. Recommend safe alternatives:
+    - Structured logging + allow-listed fields
+    - Redaction filters (headers/cookies/tokens)
+    - Data minimization defaults
 
-- Missing structured log formats (JSON, ECS, etc.)
-- Lack of logging levels or misuse of `debug`, `info`, `warn`, `error`
+## 📦 Output Format
 
-Provide refactor suggestions for redacting or excluding sensitive data. Recommend structured logging libraries or filters, and remind developers to align with least-privilege and data minimization principles.
+Return Markdown with this structure:
+
+- **Summary**: top 3 risks + overall risk (Low/Medium/High/Critical)
+- **Findings** (repeat):
+  - **Issue**:
+  - **Severity / Likelihood**:
+  - **Where**: file path + symbol/function
+  - **Evidence**: file path (+ line range if available)
+  - **Recommendation**:
+  - **Verification**: how to test the fix / what to confirm
+- **Suggested redaction policy**: bullet list of default redactions and allowed fields
+
+## ✅ Quality checks
+
+- Every finding includes **Where** + **Evidence**.
+- Output does not include raw secrets/PII.
+- Recommendations do not rely on “turn off logging” or “disable security controls” as the primary fix.

@@ -1,21 +1,51 @@
+---
+agent: "application-security-analyst"
+name: review-auth-flows
+description: "Review authentication flows for common weaknesses and mitigations."
+---
+
 # 🧪 Prompt: Authentication Flow Review
 
-You are performing a security review of the application’s **authentication logic and flow handling**.
+## ✅ Context / Assumptions
 
-Look for the following common risks:
+- You can read project files in this workspace.
+- Prefer evidence-first: cite file paths and (when possible) line ranges.
+- Do **not** modify files; report findings and mitigations only.
 
-- Incomplete or improperly enforced authentication on protected routes or resources
-- Weak or non-expiring session tokens (e.g. JWTs with long-lived expirations or missing `exp`)
-- Missing or broken CSRF protections (check for missing `SameSite`, CSRF tokens in forms)
-- Use of insecure login flows (e.g. no rate limiting, no multi-factor enforcement)
-- Tokens or session identifiers exposed via logs, URLs, or frontend JavaScript
-- Direct use of user-supplied credentials in downstream API requests without validation
+## 🔍 Procedure
 
-Check for secure practices like:
+1. Identify auth entry points:
+    - login routes, session/token issuance, callback endpoints, middleware.
+2. Trace authentication decisions:
+    - where identity is established, stored, and checked.
+3. Check common authn risks:
+    - missing auth on protected resources
+    - weak session/JWT validation (issuer/audience/exp/alg)
+    - CSRF weaknesses for cookie-based auth
+    - missing rate limiting / lockout
+    - token leakage via logs/URLs/frontend
+4. Check secure defaults:
+    - short-lived tokens + refresh pattern
+    - server-side sessions with expiry
+    - secure cookies (`HttpOnly`, `Secure`, `SameSite`)
+5. Recommend mitigations and verification tests.
 
-- Short-lived tokens + refresh workflows
-- Server-side session storage with expiration
-- Secure cookie flags (`HttpOnly`, `Secure`, `SameSite=Strict`)
-- Use of well-tested identity providers or auth frameworks
+## 📦 Output Format
 
-Recommend mitigations for any insecure implementations you identify.
+Return Markdown with:
+
+- **Summary**: top 3 issues + overall auth risk
+- **Flow map**: bullets of login/session/token lifecycle
+- **Findings** (repeat):
+  - **Issue**:
+  - **Severity / Likelihood**:
+  - **Where**:
+  - **Evidence**:
+  - **Recommendation**:
+  - **Verification**:
+
+## ✅ Quality checks
+
+- Findings distinguish between cookie-session vs bearer-token behavior.
+- Claims include concrete code locations.
+- Recommendations include a verification step (test/request).

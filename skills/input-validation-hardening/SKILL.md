@@ -3,7 +3,16 @@ name: input-validation-hardening
 description: Process for tightening input validation, canonicalization, and safe parsing to prevent injection and logic abuse.
 ---
 
+## When to use
+
 Use this skill when asked to **validate inputs**, harden request parsing, or prevent injection/abuse.
+
+## Inputs to collect (if available)
+
+- Entry points (HTTP endpoints, consumers, file parsers)
+- Data sensitivity and trust boundaries
+- Existing validation libraries/patterns in the codebase
+- Known attack/abuse cases (payloads, bypass attempts)
 
 ## Step-by-step process
 
@@ -35,3 +44,14 @@ Related prompts:
 
 - `validate-input-handling.prompt.md`
 - `scan-for-insecure-apis.prompt.md`
+
+## Output format
+
+- **Inventory**: inputs and boundaries
+- **Proposed schema(s)** (high-level)
+- **Enforcement point**: where validation should occur
+- **Test plan**: boundary + malicious inputs
+
+## Examples
+
+- “Public JSON API” → reject unknown fields, enforce max sizes, and add negative tests for type confusion and oversized payloads.

@@ -1,18 +1,14 @@
-# 🤖 Copilot Secure Defaults for Java, Node.js, and C# Projects
+# 🤖 Copilot Secure Defaults for Java, Node.js, C#, and Python Projects
 
-These instructions guide GitHub Copilot to suggest secure, intentional code patterns for Java, Node.js, and C# development — especially in enterprise or team settings. Prioritize clarity, validation, and the principle of least surprise.
-
----
+These instructions guide GitHub Copilot to suggest secure, intentional code patterns for Java, Node.js, C#, and Python development — especially in enterprise or team settings. Prioritize clarity, validation, and the principle of least surprise.
 
 ## 🔐 1. Secure by Default
 
-- Sanitize and escape all user input (prevent XSS) — never render raw data to the page.
-- Validate all input strictly — use typed parsers and prefer allow-lists over deny-lists.
+- Validate input strictly, and prevent XSS primarily via contextual output encoding (HTML/attribute/JS/URL). Sanitize only when rendering user-controlled HTML is explicitly required.
+- Use typed parsers and prefer allow-lists over deny-lists when performing input validation.
 - Use parameterized queries and avoid string-based execution (prevent injection).
-- Never store secrets in code or env files — use a secure vault (e.g. CyberArk Conjur, Azure Key Vault).
+- Never commit secrets to source control (including `.env` files). Use a secure vault/secret manager (e.g. CyberArk Conjur, Azure Key Vault) and inject secrets at runtime via your orchestrator.
 - Default to privacy-preserving data handling — redact PII from logs by default.
-
----
 
 ## 🧩 2. Language-Specific Secure Patterns
 
@@ -23,7 +19,7 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Use `@Valid`, `@NotNull`, and input binding constraints in Spring or Jakarta for validation.
 - Avoid `Runtime.exec()` or `ProcessBuilder` with unsanitized input — prefer safe APIs.
 - Default to OWASP Secure Coding Practices — [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices)
-- Load secrets using SDK-integrated secret managers, not `System.getenv()` or `.properties` files.
+- Prefer SDK-integrated secret managers; environment variables are acceptable when injected securely by the orchestrator/runtime. Do not commit secrets in `.properties`/config files.
 - Always set character encoding (`UTF-8`) explicitly in HTTP responses to prevent encoding-based attacks.
 - Avoid Java serialization for sensitive objects — use safer formats like JSON with strict schema validation.
 - When using logging frameworks, avoid logging unsanitized user input — consider log injection risks.
@@ -57,8 +53,6 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Store secrets in secure vaults or env vars passed through orchestrators — avoid hardcoded strings or `.env` files in prod.
 - Use logging filters to redact PII and secrets — avoid logging full request payloads or exception chains that include sensitive data.
 - Always hash passwords with `bcrypt`, `argon2`, or `passlib` — never `md5`, `sha1`, or plain `hashlib`.
-
----
 
 ## 🚫 3. Do Not Suggest
 
@@ -98,8 +92,6 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Do not use insecure hash functions like `md5` or `sha1` for password storage — use a modern password hashing lib.
 - Do not commit `.env` files or hardcode secrets — use secrets management infrastructure.
 
----
-
 ## 🧠 4. AI-Generated Code Safety
 
 - Verify all AI-suggested package names against official repositories to prevent supply chain attacks.
@@ -108,8 +100,6 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 - Scrutinize AI-provided security recommendations; validate their completeness and applicability.
 - Cross-check any AI-cited references (e.g., CVEs, RFCs) for authenticity to avoid misinformation.
 - Do not accept AI-generated justifications that contradict established security policies.
-
----
 
 ## 💡 Developer Tips
 

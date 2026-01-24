@@ -3,7 +3,16 @@ name: secrets-and-logging-hygiene
 description: Workflow for preventing secret leaks and sensitive logging (PII/credentials) and adding redaction defaults.
 ---
 
+## When to use
+
 Use this skill when asked to **scan for secrets**, harden logging, or reduce sensitive data exposure.
+
+## Inputs to collect (if available)
+
+- Data classification (PII, auth/session, payments)
+- Logging/telemetry stack (logger, APM, sinks)
+- Secret management approach (vault, env injection, KMS)
+- Incident/audit requirements (retention, access controls)
 
 ## Step-by-step process
 
@@ -36,3 +45,14 @@ Related prompts:
 
 - `check-for-secrets.prompt.md`
 - `assess-logging.prompt.md`
+
+## Output format
+
+- **Leak points found** (table): Type | Where | Evidence | Risk
+- **Redaction policy**: defaults + allow-listed fields
+- **Guardrails**: CI secret scanning, pre-commit, tests
+- **Verification**: how to confirm redaction and rotation
+
+## Examples
+
+- “Authorization header logged” → redact `Authorization` and cookies by default; verify logs no longer contain bearer tokens.

@@ -3,7 +3,16 @@ name: authn-authz-review
 description: Workflow to review authentication and authorization flows (sessions, tokens, RBAC/ABAC) and produce fix guidance.
 ---
 
+## When to use
+
 Use this skill when reviewing **login, session management, token validation, or authorization checks**.
+
+## Inputs to collect (if available)
+
+- Auth model (session cookie vs bearer token vs mTLS)
+- Deployment assumptions (internet-facing, internal-only, multi-tenant)
+- Sensitive assets (PII, admin actions, money movement)
+- Known roles/scopes/claims and intended policies
 
 ## Step-by-step process
 
@@ -40,3 +49,13 @@ Related prompts:
 
 - `review-auth-flows.prompt.md`
 - `check-access-controls.prompt.md`
+
+## Output format
+
+- **Summary**: scope + top 3 risks + overall risk
+- **Findings** (repeat): issue, severity/likelihood, where, evidence, recommendation, verification
+- **Policy checklist**: required claims/roles/scopes + enforcement points
+
+## Examples
+
+- “Cookie session app” → verify `HttpOnly/Secure/SameSite`, CSRF defenses, and session rotation on privilege change.

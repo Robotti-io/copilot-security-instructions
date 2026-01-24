@@ -1,75 +1,80 @@
+---
+agent: "application-security-analyst"
+name: secure-code-review
+description: "Perform a comprehensive secure code review and report prioritized findings."
+---
+
 # 🛡️ Prompt: Secure Code Review
 
 You are a senior software engineer performing a **comprehensive secure code review**.
 
----
+## ✅ Context / Assumptions
 
-## ✅ Context Instructions
+- Start from a fresh read of the current workspace (and PR diff, if available).
+- Prefer evidence-first: cite file paths and (when possible) line ranges.
+- Do **not** modify files; report findings and recommendations only.
+- If a PR diff is available, prioritize changed files first; expand repo-wide as needed.
 
-- Start from a **fresh analysis context**.
-- Disregard any previously seen reviews, summaries, or cached content.
-- Re-scan the **entire current codebase** visible in this workspace.
+## 🔍 Procedure
 
----
+### ⚠️ Important
 
-## 🔍 Step 1: Project Mapping
+- **Pay close attention to logic around:**
+  - input validation
+  - secrets or config handling
+  - logger redaction (request/response logging, error handlers, token/PII filters)
+  - access control
+- environment-specific behavior
+- Respond only after completing a fresh read of the codebase.
 
-- List all visible files and folders.
-- For each, briefly describe its purpose or domain (e.g., "core logic," "auth," "logging utilities").
+### Steps
 
----
+1. Map the project (entry points, trust boundaries, sensitive assets).
+   - List all visible files and folders.
+   - For each, briefly describe its purpose or domain (e.g., "core logic," "auth," "logging utilities").
+2. Identify key subsystems/domains and their responsibilities.
+   - Identify the key **subsystems or functional domains** in this project.
+   - Explain what role each plays (e.g., request routing, encryption, config parsing).
+3. Review by subsystem, focusing on high-risk classes:
+   - input validation, authn/authz, secrets/logging, crypto, deserialization, SSRF, dependency risks.
+   - For each subsystem:
+     - Highlight strengths
+     - Identify security observations
+       - Show file paths + relevant code
+     - Note code quality or maintainability issues
+   - Quote relevant code snippets or describe logic where needed.
+4. Produce prioritized findings with remediation and verification steps.
 
-## 🧭 Step 2: Subsystem Discovery
+## 📦 Output Format
 
-- Identify the key **subsystems or functional domains** in this project.
-- Explain what role each plays (e.g., request routing, encryption, config parsing).
-
----
-
-## 🛡️ **Step 3: Deep Review by Subsystem**
-
-For each subsystem:
-
-- Highlight strengths
-- Identify security observations
-  - Show file paths + relevant code
-- Note code quality or maintainability issues
-
-Quote relevant code snippets or describe logic where needed.
-
----
-
-## 📄 Final Output Format
-
-Generate a single Markdown file named `REVIEW.MD` with the following structure:
+Return Markdown with the following structure. If your environment supports writing files, also write it to `Secure Code Review - {{DATE}}.md` in the project root:
 
 ```markdown
 # 📋 Project Secure Code Review
 
 ## ✅ Strengths
+
 - ...
 
 ## 🛡️ Security Observations
+
 ### [filename/path]
+
 - **Issue**: ...
 - **Impact**: ...
 - **Recommendation**: ...
 
 ## 🔍 Code Quality Notes
+
 - ...
 
 ## 🧭 Suggested Next Steps
+
 - ...
 ```
 
-## ⚠️ Important
+## ✅ Quality checks
 
-Pay close attention to logic around:
-
-- input validation
-- secrets or config handling
-- logger redaction (e.g. loggerENVCheck, loggerStackCheck)
-- access control
-- environment-specific behavior
-
-Respond only after completing a fresh read of the codebase.
+- Each finding includes **Where** + **Evidence**.
+- Recommendations avoid “disable security controls” as the primary fix.
+- Verification steps are actionable (test/request/scan).

@@ -3,7 +3,16 @@ name: secure-fix-validation
 description: Standard validation checklist to prove a security fix works and doesn’t regress behavior.
 ---
 
+## When to use
+
 Use this skill after implementing a security fix, or when reviewing a PR.
+
+## Inputs to collect (if available)
+
+- Vulnerability description and expected secure behavior
+- Repro steps (request, payload, or test)
+- Affected components and entry points
+- Deployment/rollout constraints (feature flags, backwards compatibility)
 
 ## Step-by-step process
 
@@ -31,3 +40,15 @@ Use this skill after implementing a security fix, or when reviewing a PR.
 - Tests added/updated
 - Verification evidence (logs/screenshots/snippets)
 - Rollout notes
+
+## Output format
+
+- **Repro (pre-fix)**: how it failed
+- **Verification (post-fix)**: what now happens
+- **Tests**: added/updated + what they cover
+- **Evidence**: logs/screenshots/snippets (redacted)
+- **Rollout notes**: monitoring, flags, compatibility
+
+## Examples
+
+- “Fix: block IDOR on /users/:id” → add negative test for cross-user access; verify 403 and tenant scoping on DB query.
