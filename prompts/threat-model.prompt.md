@@ -39,8 +39,7 @@ description: "Threat model the system using the 4Q framework and produce actiona
    - Define a validation plan (no code): scenarios + evidence to collect + owners.
 
 ## 📦 Output Format
-1) Write the full threat model report to `./Threat Model Review - {{DATE}}.md` (project root).
-2) Return the same content as GitHub-flavored Markdown in chat (PR-comment ready) with:
+Return the threat model as GitHub-flavored Markdown in chat (PR-comment ready) with the structure below. If your environment supports writing files, also write it to `./Threat Model Review - {{DATE}}.md` (project root):
 
 ### Scope
 - Components:

@@ -6,10 +6,10 @@ Agent profiles are Markdown files with YAML frontmatter (`name`, `description`, 
 
 ## Included agents
 
-- `application-security-orchestrator` — entry point router; delegates to specialist agents
-- `application-security-analyst` — read-only security review + findings
-- `application-security-engineer` — implement security fixes + tests
-- `application-security-architect` — threat modeling + guardrails + ADRs
+- [application-security-orchestrator](application-security-orchestrator.agent.md) — entry point router; delegates to specialist agents
+- [application-security-analyst](application-security-analyst.agent.md) — read-only security review + findings
+- [application-security-engineer](application-security-engineer.agent.md) — implement security fixes + tests
+- [application-security-architect](application-security-architect.agent.md) — threat modeling + guardrails + ADRs
 
 ## Recommended usage
 

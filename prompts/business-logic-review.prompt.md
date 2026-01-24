@@ -57,7 +57,7 @@ You are a senior software engineer performing a **multi-stage review of applicat
 
 ## 📦 Output Format
 
-Generate a Markdown file named `Business Logic Flow Analysis - {{DATE}}.md` with the following structure:
+Return Markdown with the following structure. If your environment supports writing files, also write it to `Business Logic Flow Analysis - {{DATE}}.md` in the project root:
 
 ```markdown
 # 🧠 Business Logic Flow Analysis

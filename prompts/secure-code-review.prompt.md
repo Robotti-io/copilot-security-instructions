@@ -22,7 +22,7 @@ You are a senior software engineer performing a **comprehensive secure code revi
 - **Pay close attention to logic around:**
   - input validation
   - secrets or config handling
-  - logger redaction (e.g. loggerENVCheck, loggerStackCheck)
+  - logger redaction (request/response logging, error handlers, token/PII filters)
   - access control
 - environment-specific behavior
 - Respond only after completing a fresh read of the codebase.
@@ -47,7 +47,7 @@ You are a senior software engineer performing a **comprehensive secure code revi
 
 ## 📦 Output Format
 
-Generate a single Markdown file named `Secure Code Review - {{DATE}}.MD` in the project root with the following structure:
+Return Markdown with the following structure. If your environment supports writing files, also write it to `Secure Code Review - {{DATE}}.md` in the project root:
 
 ```markdown
 # 📋 Project Secure Code Review

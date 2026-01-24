@@ -49,6 +49,28 @@ It standardizes intake, then hands off to specialist agents (Analyst/Architect/E
 
 ---
 
+## 🧑‍💻 Agents
+
+| Agent | Purpose |
+| --- | --- |
+| [application-security-orchestrator](agents/application-security-orchestrator.agent.md) | Standardize intake and route to the right specialist. |
+| [application-security-analyst](agents/application-security-analyst.agent.md) | Read-only findings + remediation guidance. |
+| [application-security-architect](agents/application-security-architect.agent.md) | Threat models + guardrails + ADRs. |
+| [application-security-engineer](agents/application-security-engineer.agent.md) | Implement fixes + tests with minimal diffs. |
+
+## 🧩 Skills
+
+| Skill | Intended use |
+| --- | --- |
+| [secure-code-review](skills/secure-code-review/SKILL.md) | Repeatable security review workflow + findings template. |
+| [authn-authz-review](skills/authn-authz-review/SKILL.md) | Review authentication and authorization controls. |
+| [input-validation-hardening](skills/input-validation-hardening/SKILL.md) | Tighten validation boundaries and parsing safety. |
+| [dependency-cve-triage](skills/dependency-cve-triage/SKILL.md) | CVE reachability + remediation plan workflow. |
+| [secrets-and-logging-hygiene](skills/secrets-and-logging-hygiene/SKILL.md) | Prevent secret leaks and add redaction defaults. |
+| [genai-acceptance-review](skills/genai-acceptance-review/SKILL.md) | Prevent over-trust and prompt/tool injection risks. |
+| [threat-model-lite](skills/threat-model-lite/SKILL.md) | Lightweight threat modeling with ranked mitigations. |
+| [secure-fix-validation](skills/secure-fix-validation/SKILL.md) | Prove fixes work and don’t regress behavior. |
+
 ## 📦 How to Use in a Real Project
 
 Tip for contributors: when adding a file under `prompts/`, update the Prompt Catalogue table.
