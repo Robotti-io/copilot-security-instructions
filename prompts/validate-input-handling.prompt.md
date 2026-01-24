@@ -1,21 +1,42 @@
 # 🛡️ Prompt: Input Validation & Sanitization Audit
 
-You are reviewing code for unsafe or missing input validation. Your task is to identify all potential risks related to untrusted user input.
+## ✅ Context / Assumptions
 
-Flag any of the following:
+- You can read project files in this workspace.
+- Prefer evidence-first: cite file paths and (when possible) line ranges.
+- Do **not** modify files; provide findings and remediation guidance only.
 
-- No use of structured input validation libraries (e.g. `Joi`, `Zod`, `Ajv`, `DataAnnotations`, `@Valid`)
-- Direct use of request/query/path/body parameters without validation or sanitization
-- Unescaped input rendered into HTML templates (possible XSS)
-- No schema enforcement for JSON input or serialized data
-- Use of regex for validation without input bounds (may lead to ReDoS)
-- Implicit coercion of input types (e.g. treating string as number or boolean without validation)
+## 🔍 Procedure
 
-Recommend:
+1. Inventory untrusted inputs:
+    - HTTP params/path/query/body/headers, file uploads, message payloads, env/CLI.
+2. Identify validation boundaries:
+    - middleware/controllers/DTO binding, schema validators.
+3. Flag high-risk patterns:
+    - unvalidated inputs reaching sensitive sinks (DB, templates, commands, file paths)
+    - implicit coercion, missing bounds, regex ReDoS risk
+    - missing allow-lists for enums/keys
+4. Recommend hardening:
+    - schema-based validation, canonicalization, rejecting unknown fields
+    - contextual output encoding
+5. Provide verification steps/tests for each fix.
 
-- Strict, schema-based input validation
-- HTML/context-aware encoding of dynamic output
-- Safe handling of nested objects, arrays, and dynamic keys
-- Input length and character whitelisting where appropriate
+## 📦 Output Format
 
-Provide suggested fixes and explanations to help developers understand *why* these patterns are dangerous.
+Return Markdown with:
+
+- **Summary**: top 3 validation gaps + overall risk
+- **Findings** (repeat):
+  - **Issue**:
+  - **Severity / Likelihood**:
+  - **Where**:
+  - **Evidence**:
+  - **Recommendation**:
+  - **Verification**:
+- **Suggested validation boundary**: where validation should live (and why)
+
+## ✅ Quality checks
+
+- Findings trace data flow from input → sink.
+- Each recommendation is specific enough to implement.
+- Evidence includes concrete code locations.

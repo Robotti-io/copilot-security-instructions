@@ -3,6 +3,8 @@ name: secure-code-review
 description: Repeatable process for an application security code review that produces prioritized findings and fix guidance.
 ---
 
+## When to use
+
 Use this skill when asked to **review code for security**, produce findings, or prepare guidance for remediation.
 
 ## Inputs to collect (if available)

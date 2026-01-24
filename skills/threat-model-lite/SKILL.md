@@ -3,7 +3,16 @@ name: threat-model-lite
 description: Lightweight, repeatable threat modeling for a feature or service with prioritized mitigations.
 ---
 
+## When to use
+
 Use this skill when planning a feature, reviewing an architecture, or preparing security requirements.
+
+## Inputs to collect (if available)
+
+- Entry points (endpoints/jobs)
+- Assets and sensitivities (PII, secrets, money movement)
+- External services and trust assumptions
+- Deployment details (internet-facing, multi-tenant, auth model)
 
 ## Step-by-step process
 
@@ -32,3 +41,14 @@ Use this skill when planning a feature, reviewing an architecture, or preparing 
 - Trust boundaries
 - Top threats + mitigations
 - Residual risk + next steps
+
+## Output format
+
+- **Scope**
+- **Assets & trust boundaries**
+- **Top threats** (ranked) with mitigations (prevent/detect/respond)
+- **Validation scenarios** (3)
+
+## Examples
+
+- “New webhook endpoint” → threats: spoofing, replay, SSRF; mitigations: signature validation, nonce/timestamp, allow-listed egress.

@@ -4,6 +4,51 @@
 
 ---
 
+## ✅ Context / Assumptions
+
+- You are threat-modeling the current repository and/or the current PR diff (if available).
+- Prefer evidence-first: cite file paths and (when possible) line ranges when claiming mitigations exist.
+- Ask 2–4 clarifying questions if scope/dataflows or deployment assumptions are unclear.
+- Do not generate code or patches unless explicitly requested; focus on analysis and artifacts.
+
+## 🔍 Procedure
+
+1. **Q1 — What are we working on?**
+
+    - Summarize scope, assets, dataflows, and trust boundaries.
+
+1. **Q2 — What can go wrong?**
+
+    - Enumerate threats mapped to STRIDE + OWASP tag.
+
+1. **Q3 — What are we going to do about it?**
+
+    - Identify mitigations as PRESENT/ABSENT with evidence.
+
+1. **Q4 — Did we do a good job?**
+
+    - Define a validation plan (no code), evidence to collect, and owners.
+
+## 📦 Output Format
+
+Return Markdown with:
+
+- **Scope** (bullets): components, trust boundaries, key dataflows
+- **Threats** table: ID | Summary | STRIDE | OWASP | Likelihood | Impact | Status
+- **Mitigations** table: Threat ID | Mitigation | Status (PRESENT/ABSENT) | Evidence
+- **Validation plan**: 3 scenarios (intent, steps, expected, evidence)
+- **Open questions**: items needing confirmation
+
+## ✅ Quality checks
+
+- Every PRESENT mitigation includes a concrete code/config location when possible.
+- Threats are specific to the described flows (avoid generic lists).
+- Separate proven evidence from assumptions; label assumptions clearly.
+
+---
+
+## Appendix
+
 ## 0) Mission & Scope
 
 **Goal:** Embed Adam Shostack’s **Four-Question** threat modeling into daily dev flow using VS Code + GitHub. The agent infers design from code, converses with the dev, and produces durable artifacts (**`threatmodel.yaml` + `ThreatModel.md`**), plus targeted PR comments and optional test stubs.

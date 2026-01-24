@@ -1,16 +1,42 @@
 # 🔒 Prompt: Access Control & Authorization Review
 
-You are auditing this codebase for **authorization and access control weaknesses**.
+## ✅ Context / Assumptions
 
-Focus on identifying:
+- You can read project files in this workspace.
+- Prefer evidence-first: cite file paths and (when possible) line ranges.
+- Do **not** modify files; report findings and recommendations only.
+- Assume attackers can tamper with client-side state; require server-side enforcement.
 
-- Missing or weak role-based access control (RBAC) or attribute-based access control (ABAC) enforcement
-- Direct access to protected routes, actions, or data without permission checks
-- Business logic that bypasses access validation (e.g. trusting client-side flags or roles)
-- Use of hardcoded role or permission strings without central enforcement
-- Functions exposed via APIs that should require authentication but don’t
-- Lack of contextual access checks (e.g. ensuring users can only access their own records)
+## 🔍 Procedure
 
-If applicable, recommend use of secure middleware, centralized auth policies, and consistent permission enforcement patterns.
+1. Identify authn/authz boundaries:
+    - middleware/guards, policy helpers, route handlers/controllers, service methods.
+2. Enumerate protected resources and actions (read/write/admin operations).
+3. Look for common access control failures:
+    - missing authn on protected endpoints
+    - missing authz (IDOR, tenant bypass, role bypass)
+    - inconsistent checks across similar endpoints
+    - hardcoded role strings without central policy
+4. Verify object-level authorization:
+    - ownership checks, tenant scoping, subject/param matching.
+5. Recommend a consistent enforcement pattern (middleware/policy layer) and verification tests.
 
-Highlight both missing controls and inconsistently applied ones. Annotate with comments and suggest safer refactors.
+## 📦 Output Format
+
+Return Markdown with:
+
+- **Summary**: top 3 issues + overall risk
+- **Findings** (repeat):
+  - **Issue**:
+  - **Severity / Likelihood**:
+  - **Where**: file path + symbol
+  - **Evidence**: file path (+ line range if available)
+  - **Recommendation**:
+  - **Verification**: negative test/bypass attempt to prove it’s fixed
+- **Consistency checklist**: bullets of “must be present everywhere” checks
+
+## ✅ Quality checks
+
+- Each finding includes object-level detail when applicable (which identifier can be abused).
+- Claims are backed by specific code locations.
+- Recommendations avoid “security through obscurity” (e.g., hiding endpoints) as a primary control.

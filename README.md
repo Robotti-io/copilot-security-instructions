@@ -1,4 +1,4 @@
-# 🛡️ CoPilot Security Instructions
+# 🛡️ Copilot Security Instructions
 
 [![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/1a935343-666d-457a-b210-2e0d27e9ef81)
 
@@ -41,11 +41,14 @@ Explore the available prompts and their intended use cases:
 | [review-auth-flows.prompt.md](prompts/review-auth-flows.prompt.md) | Evaluate authentication logic and session handling. | Review login flows for common risks and best practices. |
 | [scan-for-insecure-apis.prompt.md](prompts/scan-for-insecure-apis.prompt.md) | Spot deprecated or insecure API usage. | Replace risky APIs with modern, safer alternatives. |
 | [secure-code-review.prompt.md](prompts/secure-code-review.prompt.md) | Perform a comprehensive security review of the codebase. | Conduct an end-to-end audit for security issues. |
+| [threat-model.prompt.md](prompts/threat-model.prompt.md) | Produce a lightweight threat model using the 4Q approach with scoped threats, mitigations, and a validation plan. | Threat-model a feature/system or PR diff and generate durable artifacts. |
 | [validate-input-handling.prompt.md](prompts/validate-input-handling.prompt.md) | Check for missing or unsafe input validation. | Evaluate request handling for validation and sanitization gaps. |
 
 ---
 
 ## 📦 How to Use in a Real Project
+
+Tip for contributors: when adding a file under `prompts/`, update the Prompt Catalogue table.
 
 ### Leveraging Static Files
 

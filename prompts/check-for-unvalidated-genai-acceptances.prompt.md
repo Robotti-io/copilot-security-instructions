@@ -1,19 +1,43 @@
 # 🤖 Prompt: Unvalidated GenAI Code Acceptance Audit
 
-You are reviewing code for signs that **AI-generated content** (e.g. from GitHub Copilot, ChatGPT, CodeWhisperer) has been accepted without validation, testing, or verification.
+## ✅ Context / Assumptions
 
-Look for and flag the following:
+- You can read project files in this workspace.
+- Prefer evidence-first: cite file paths and (when possible) line ranges.
+- Do **not** modify files.
+- The goal is to prevent “over-trust” of AI-generated code and hallucinated dependencies/APIs.
 
-- Dependencies or packages that do not exist in official registries (possible hallucinated packages)
-- Calls to non-existent, deprecated, or undocumented API methods
-- Configuration code that does not match the project’s infrastructure (e.g. Azure config in AWS projects)
-- Use of placeholder, ambiguous, or overly generic variable/method names (e.g. `doTask()`, `handleThing()`)
-- Comments or TODOs referencing AI use without follow-up verification
+## 🔍 Procedure
 
-Also check for:
+1. Look for supply-chain red flags:
+    - suspicious/new dependencies, packages that may not exist, unpinned versions.
+2. Look for API correctness red flags:
+    - calls to non-existent/undocumented APIs, copy/pasted snippets that don’t match project frameworks.
+3. Look for validation and testing gaps:
+    - newly added logic without tests, placeholder implementations, TODOs referencing AI.
+4. Look for context drift:
+    - config/code patterns that don’t match the repo’s infra stack.
+5. Recommend verification steps:
+    - confirm dependencies in official registries
+    - run/build/test steps and add targeted tests
+    - require human review for privileged/unsafe operations
 
-- Lack of test coverage or validation for recently added logic
-- Sudden style or structure shifts that may indicate unreviewed AI insertion
-- No accompanying documentation or context for added code
+## 📦 Output Format
 
-Provide suggestions for verifying third-party resources, validating logic, and encouraging human-in-the-loop code review. Include annotations where risk or uncertainty is high.
+Return Markdown with:
+
+- **Summary**: top 3 risks + quick verification checklist
+- **Findings** (repeat):
+  - **Issue**:
+  - **Severity / Likelihood**:
+  - **Where**:
+  - **Evidence**:
+  - **Recommendation**:
+  - **Verification**:
+- **Verification checklist** (bullets): deps, APIs, tests, docs, config alignment
+
+## ✅ Quality checks
+
+- Findings are grounded in concrete evidence (not style-only opinions).
+- Recommendations include a clear “how to verify” step.
+- Avoid claiming a package/API is fake unless you can prove it; otherwise label as “needs verification”.
