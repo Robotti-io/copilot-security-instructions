@@ -3,6 +3,8 @@ name: threat-model-lite
 description: Lightweight, repeatable threat modeling for a feature or service with prioritized mitigations.
 ---
 
+# Threat Model (Lite)
+
 ## When to use
 
 Use this skill when planning a feature, reviewing an architecture, or preparing security requirements.

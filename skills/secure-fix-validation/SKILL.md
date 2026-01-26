@@ -3,6 +3,8 @@ name: secure-fix-validation
 description: Standard validation checklist to prove a security fix works and doesn’t regress behavior.
 ---
 
+# Secure Fix Validation
+
 ## When to use
 
 Use this skill after implementing a security fix, or when reviewing a PR.

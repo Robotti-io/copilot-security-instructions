@@ -30,6 +30,8 @@ This project offers:
 
 Explore the available prompts and their intended use cases:
 
+These prompt files live under `prompts/` in this repo and are intended to be copied into a consuming repository’s `.github/prompts/`.
+
 **Recommended workflow:** start with the `application-security-orchestrator` agent (see `agents/application-security-orchestrator.agent.md`).
 It standardizes intake, then hands off to specialist agents (Analyst/Architect/Engineer) depending on whether you want findings, a threat model, or implemented fixes.
 
@@ -40,6 +42,8 @@ It standardizes intake, then hands off to specialist agents (Analyst/Architect/E
 | [check-access-controls.prompt.md](prompts/check-access-controls.prompt.md) | Audit authorization and access control weaknesses. | Ensure RBAC/ABAC enforcement and consistent permission checks. |
 | [check-for-secrets.prompt.md](prompts/check-for-secrets.prompt.md) | Detect hardcoded secrets and credentials. | Locate embedded keys or tokens and suggest secure storage. |
 | [check-for-unvalidated-genai-acceptances.prompt.md](prompts/check-for-unvalidated-genai-acceptances.prompt.md) | Find unvalidated AI-generated code or hallucinated assets. | Verify that AI suggestions are real, tested, and documented. |
+| [add-content-security-policy.prompt.md](prompts/add-content-security-policy.prompt.md) | Design, implement, and roll out a new Content Security Policy (CSP) safely. | Add CSP to a web app with a deployable policy string, rollout plan, and verification steps. |
+| [csp-review.prompt.md](prompts/csp-review.prompt.md) | Review a web application’s Content-Security-Policy (CSP) for XSS resistance, safe third-party usage, and deployability. | Evaluate an existing CSP policy and recommend hardening + rollout steps. |
 | [dependency-cve-triage.prompt.md](prompts/dependency-cve-triage.prompt.md) | Triage a known CVE against a project's dependency: explain the exploit, assess reachability and configuration, and produce a structured Dependency Tracker report. | Analyze a specific CVE's impact on local code, determine exploitability, and generate a concise triage report. |
 | [review-auth-flows.prompt.md](prompts/review-auth-flows.prompt.md) | Evaluate authentication logic and session handling. | Review login flows for common risks and best practices. |
 | [scan-for-insecure-apis.prompt.md](prompts/scan-for-insecure-apis.prompt.md) | Spot deprecated or insecure API usage. | Replace risky APIs with modern, safer alternatives. |

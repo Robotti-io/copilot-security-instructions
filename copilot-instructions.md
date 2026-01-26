@@ -27,7 +27,8 @@ These instructions guide GitHub Copilot to suggest secure, intentional code patt
 ### 🟩 Node.js
 
 - Use JSON Schema validation for all structured input — prefer libraries like `ajv` or `zod`.
-- Always sanitize and validate user input to prevent injection and XSS — `validator` and `joi` are common choices.
+- Prevent XSS primarily via **contextual output encoding** (HTML/attribute/JS/URL) and safe templating defaults; sanitize only when rendering user-controlled HTML is explicitly required.
+- Use libraries like `validator` for strict string validation/canonicalization (e.g., emails, URLs) and `joi`/`zod`/`ajv` for schema validation.
 - Use parameterized queries with database clients (e.g. `pg`, `mongoose`) — never concat SQL or query strings.
 - Default to using `helmet` in Express to set secure HTTP headers.
 - Use `dotenv` only in local dev — use secret managers (e.g. AWS Secrets Manager, Azure Key Vault) in prod.

@@ -3,6 +3,8 @@ name: secrets-and-logging-hygiene
 description: Workflow for preventing secret leaks and sensitive logging (PII/credentials) and adding redaction defaults.
 ---
 
+# Secrets and Logging Hygiene
+
 ## When to use
 
 Use this skill when asked to **scan for secrets**, harden logging, or reduce sensitive data exposure.
