@@ -1,7 +1,7 @@
 ---
 name: application-security-orchestrator
 description: Entry-point AppSec router that standardizes intake, delegates to specialist agents, and synthesizes evidence-first outputs.
-tools: ["read","search","agent","edit","execute"]
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'agent', 'todo']
 handoffs:
   - label: Triage findings (Analyst)
     agent: application-security-analyst
