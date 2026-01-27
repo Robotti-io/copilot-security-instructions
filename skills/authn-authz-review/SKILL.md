@@ -3,6 +3,8 @@ name: authn-authz-review
 description: Workflow to review authentication and authorization flows (sessions, tokens, RBAC/ABAC) and produce fix guidance.
 ---
 
+# Authn/Authz Review
+
 ## When to use
 
 Use this skill when reviewing **login, session management, token validation, or authorization checks**.

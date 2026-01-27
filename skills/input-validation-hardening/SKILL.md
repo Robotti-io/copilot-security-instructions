@@ -3,6 +3,8 @@ name: input-validation-hardening
 description: Process for tightening input validation, canonicalization, and safe parsing to prevent injection and logic abuse.
 ---
 
+# Input Validation Hardening
+
 ## When to use
 
 Use this skill when asked to **validate inputs**, harden request parsing, or prevent injection/abuse.

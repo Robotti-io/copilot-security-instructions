@@ -2,6 +2,7 @@ FROM node:lts-bullseye-slim
 
 ENV NODE_ENV=production
 ENV server.port=8080
+ENV server.ssl=false
 ENV server.hostname=localhost
 ENV logger.transports.console.enabled=true
 ENV logger.transports.console.level=info

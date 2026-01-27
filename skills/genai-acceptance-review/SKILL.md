@@ -3,6 +3,8 @@ name: genai-acceptance-review
 description: Review workflow for AI/LLM output usage to prevent over-trust, injection, and unsafe automation.
 ---
 
+# GenAI Acceptance Review
+
 ## When to use
 
 Use this skill when a system **consumes LLM output** to make decisions or perform actions.
