@@ -220,3 +220,14 @@ This project is community-friendly and designed for continuous improvement.
 If you have suggestions, feedback, or language rules to contribute — feel free to open an issue or PR.
 
 Let’s make Copilot safer, one suggestion at a time. 🛠️
+
+## Disclaimer
+
+This repository, including all instructions, prompts, agents, examples, and related application content,
+is provided “AS IS”, without warranties or conditions of any kind, express or implied, including without
+limitation warranties of merchantability, fitness for a particular purpose, noninfringement, security,
+accuracy, completeness, or regulatory compliance.
+
+Use of this repository is at your own risk. Robotti and its contributors shall not be liable for any claims,
+damages, losses, or other liability arising from or related to the use, misuse, or inability to use this
+repository or any outputs produced from it.
