@@ -5,6 +5,7 @@ description: "Analyze repository-grounded identity, access control, and authoriz
 ---
 
 # Prompt: Access Control & Authorization Architecture Review
+
 ## (Repo-Grounded IAM / AuthZ Mapping + Tool-Validated Mermaid)
 
 ## Mission & Scope
@@ -98,7 +99,7 @@ Ask 1–2 questions that determine how access decisions are meant to work.
 
 Prioritize these:
 
-4. Which authorization styles are intended?
+1. Which authorization styles are intended?
    - RBAC
    - ABAC
    - policy-based authorization
@@ -108,7 +109,7 @@ Prioritize these:
    - custom/business-rule authorization
    - mixed
 
-5. Which access concepts exist in the intended design?
+2. Which access concepts exist in the intended design?
    - LDAP / AD groups
    - SSO groups
    - app roles
@@ -126,7 +127,7 @@ Ask 1–2 questions to understand where checks are actually enforced.
 
 Prioritize these:
 
-6. Where should authorization be enforced?
+1. Where should authorization be enforced?
    - edge / gateway
    - middleware
    - route/controller annotations
@@ -137,7 +138,7 @@ Prioritize these:
    - UI only
    - mixed
 
-7. Are there known exceptions, bypass paths, or alternate execution paths such as:
+2. Are there known exceptions, bypass paths, or alternate execution paths such as:
    - internal APIs
    - admin tools
    - support impersonation
@@ -150,7 +151,7 @@ Prioritize these:
 
 ### Stage 4 — Confirm source of truth and environment variance
 
-8. What is the expected source of truth for access assignments?
+1. What is the expected source of truth for access assignments?
    - directory groups
    - IdP groups/claims
    - application database
@@ -159,7 +160,7 @@ Prioritize these:
    - hard-coded mapping
    - mixed
 
-9. Do role/group/permission mappings differ by environment or tenant?
+2. Do role/group/permission mappings differ by environment or tenant?
 
 ### Intake rules
 
@@ -411,6 +412,7 @@ Include:
 - owner
 
 Examples:
+
 - user without required role denied a privileged route
 - stale LDAP group no longer grants access
 - service token cannot call admin-only API

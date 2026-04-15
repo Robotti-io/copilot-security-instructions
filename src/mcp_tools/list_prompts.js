@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import { logger } from 'copilot-instructions-mcp/core';
 import { prompts } from 'copilot-instructions-mcp/mcp_prompts';
 
