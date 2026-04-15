@@ -37,6 +37,7 @@ It standardizes intake, then hands off to specialist agents (Analyst/Architect/E
 
 | Prompt | Description | Intended Use |
 | --- | --- | --- |
+| [access-control-and-authorization-architecutre.prompt.md](prompts/access-control-and-authorization-architecture.prompt.md) | Review and report on access control / authorization architecture for project. | Perform analysis of the current architecture for access control and authorization within the project. |
 | [assess-logging.prompt.md](prompts/assess-logging.prompt.md) | Identify unsafe logging and exposure of sensitive data. | Audit log output for leaks and recommend safer patterns. |
 | [business-logic-review.prompt.md](prompts/business-logic-review.prompt.md) | Analyze overall business logic flow and decision making. | Map application behavior and critique critical logic paths. |
 | [check-access-controls.prompt.md](prompts/check-access-controls.prompt.md) | Audit authorization and access control weaknesses. | Ensure RBAC/ABAC enforcement and consistent permission checks. |
