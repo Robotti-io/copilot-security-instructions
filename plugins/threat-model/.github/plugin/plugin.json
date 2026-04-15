@@ -1,0 +1,16 @@
+{
+  "name": "threat-model",
+  "description": "Performs threat modeling using Mermaid diagrams to validate flowcharts / sequence diagrams for security review",
+  "version": "1.0.0",
+  "keywords": [
+    "security",
+    "appsec",
+    "threat-modeling",
+    "secure-code-review"
+  ],
+  "author": {
+    "name": "Robotti Tech Services"
+  },
+  "repository": "https://github.com/Robotti-io/copilot-security-instructions",
+  "license": "ISC"
+}

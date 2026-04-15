@@ -1,0 +1,19 @@
+{
+  "name": "copilot-security-instructions",
+  "metadata": {
+    "description": "Security-focused GitHub Copilot plugin marketplace for AppSec agents and the threat-model skill",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "owner": {
+    "name": "Robotti Tech Services"
+  },
+  "plugins": [
+    {
+      "name": "threat-model",
+      "description": "Performs threat modeling using Mermaid diagrams to validate flowcharts / sequence diagrams for security review",
+      "version": "1.0.0",
+      "source": "copilot-security-instructions"
+    }
+  ]
+}
