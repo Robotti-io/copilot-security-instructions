@@ -12,6 +12,7 @@ Each skill lives in its own folder and contains a `SKILL.md` file (Markdown with
 - [dependency-cve-triage](dependency-cve-triage/SKILL.md)
 - [secrets-and-logging-hygiene](secrets-and-logging-hygiene/SKILL.md)
 - [genai-acceptance-review](genai-acceptance-review/SKILL.md)
+- [threat-model](threat-model/SKILL.md)
 - [threat-model-lite](threat-model-lite/SKILL.md)
 - [secure-fix-validation](secure-fix-validation/SKILL.md)
 

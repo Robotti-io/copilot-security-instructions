@@ -17,6 +17,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "threat-model:mermaid-docs": "node skills/threat-model/scripts/mermaid-docs.mjs",
+    "threat-model:mermaid-validate": "node skills/threat-model/scripts/validate-mermaid.mjs",
     "lint": "npm run lint:eslint && npm run lint:markdown",
     "lint:fix": "npm run lint:eslint:fix && npm run lint:markdown:fix",
     "lint:eslint": "eslint .",

@@ -73,8 +73,11 @@ It standardizes intake, then hands off to specialist agents (Analyst/Architect/E
 | [dependency-cve-triage](skills/dependency-cve-triage/SKILL.md) | CVE reachability + remediation plan workflow. |
 | [secrets-and-logging-hygiene](skills/secrets-and-logging-hygiene/SKILL.md) | Prevent secret leaks and add redaction defaults. |
 | [genai-acceptance-review](skills/genai-acceptance-review/SKILL.md) | Prevent over-trust and prompt/tool injection risks. |
+| [threat-model](skills/threat-model/SKILL.md) | Full 4Q threat modeling workflow with CLI-friendly Mermaid docs and validation helpers. |
 | [threat-model-lite](skills/threat-model-lite/SKILL.md) | Lightweight threat modeling with ranked mitigations. |
 | [secure-fix-validation](skills/secure-fix-validation/SKILL.md) | Prove fixes work and don’t regress behavior. |
+
+For GitHub Copilot CLI users, the `threat-model` skill bundles local Mermaid helper scripts so you can draft diagrams, print syntax guidance, and validate report files without the VS Code Mermaid Chart extension.
 
 ## 📦 How to Use in a Real Project
 
