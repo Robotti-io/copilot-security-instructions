@@ -10,6 +10,7 @@ Each prompt is a Markdown file with YAML frontmatter (typically `agent`, `name`,
 
 ## Included prompts
 
+- [access-control-and-authorization-architecture.prompt.md](access-control-and-authorization-architecture.prompt.md) - Review and report on access control / authorization architecture for project.
 - [add-content-security-policy.prompt.md](add-content-security-policy.prompt.md) — design and roll out a new CSP
 - [assess-logging.prompt.md](assess-logging.prompt.md) — audit logs for sensitive data exposure
 - [business-logic-review.prompt.md](business-logic-review.prompt.md) — map business logic flows and identify abuse risks
