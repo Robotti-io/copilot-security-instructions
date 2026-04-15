@@ -1,288 +1,143 @@
----
-agent: "application-security-architect"
-name: threat-model
-description: "Threat model the system using Shostack’s 4Q framework and produce actionable artifacts with repo-grounded diagrams validated via Mermaid Chart tools."
----
+# AI Should Not Be Optimized to Feel Less Human
 
-# Prompt: 4Q Threat Model (DFDs + Supporting Diagrams, Tool-Validated Mermaid)
+There is something undeniably impressive about an AI model that can answer questions from benchmarks like *Humanity’s Last Exam*. These tests are designed to separate ordinary competence from elite, edge-case expertise. They ask questions that can stump not just casual users, but highly trained specialists. When a model performs well on them, it is natural to see that as evidence of progress.
 
-## Mission & Scope
+But I think we need to ask a harder question: **progress toward what?**
 
-**Goal:** Embed Adam Shostack’s **Four-Question** threat modeling into daily dev flow using VS Code + GitHub. Infer design from the repository (and/or PR diff), collaborate with the developer, and produce durable artifacts:
+## The problem with treating benchmark mastery as the north star
 
-1. a repo-grounded threat model Markdown report **with validated Mermaid diagrams**
-2. a concise PR-ready summary (copy/paste)
+A benchmark can measure something real without measuring the thing that matters most.
 
-**4 Questions:**
+If a model can solve extremely difficult questions across rarefied domains, that tells us something about its reach. It may show strong recall, reasoning, pattern recognition, and the ability to operate at the edge of human expertise. That is not trivial.
 
-1. *What are we working on?* → Infer & confirm scope, assets, data flows, trust boundaries  
-2. *What can go wrong?* → Enumerate threats (context-specific), map to STRIDE + OWASP  
-3. *What are we going to do about it?* → Identify mitigations + gaps; status w/ evidence  
-4. *Did we do a good job?* → Validation plan: evidence to collect + owners
+But it does **not automatically follow** that the same model will be better at the kind of collaboration most people actually want from AI.
 
-**Where it runs:**
+For most of us, useful intelligence is not defined by whether a system can answer the hardest possible question a top 0.01% expert might ask. It is defined by whether it can:
 
-- **Local:** VS Code Copilot Chat / Agent mode  
-- **PR review:** Same output format works as PR comment or issue description
+- understand what we are trying to do
+- help us think through messy, ambiguous situations
+- explain clearly without showing off
+- make safe and practical tradeoffs
+- adapt its depth to the user and the moment
+- remain patient, grounded, and collaborative
 
----
+Those are different qualities.
 
-## ✅ Context / Assumptions
+## Extreme expertise is not the same thing as usefulness
 
-- Threat model the current repository and/or current PR diff (if available).
-- Persist output as a Markdown file in project root:
-  - `Threat Model Review - {{DATE}}.md`
-- Evidence-first: cite file paths and (when possible) line ranges for claims about design, flows, mitigations, and trust boundaries.
-- If you cannot confirm something from the repo/diff, label it **ASSUMPTION** or **UNKNOWN** (do not guess).
-- Ask **2–4 clarifying questions** if scope, dataflows, deployment, or identities are unclear.
-- Do not generate code changes unless explicitly requested.
+I come at this from the IT world. I would describe myself as broadly capable across cybersecurity, infrastructure, software development, and systems management, with a working grasp of networking concepts at a high level even if that is not my strongest domain.
 
----
+I also have practical experience with cryptography. For example, I built an internal application that can issue a local root CA, create an intermediate CA, and handle certificate issuance and renewal workflows using those trust chains.
 
-## 🧰 Mermaid Diagram Tooling (Mandatory)
+That is real, applied competence. It reflects understanding of trust hierarchies, lifecycle management, operational constraints, and implementation details.
 
-You have access to Mermaid Chart tools:
+And yet, if you dropped me into one of these extreme benchmark sets, I would likely fail many of the questions.
 
-- `mermaidchart.vscode-mermaid-chart/get_syntax_docs`
-- `mermaidchart.vscode-mermaid-chart/mermaid-diagram-validator`
-- `mermaidchart.vscode-mermaid-chart/mermaid-diagram-preview`
+That does not mean I lack the ability to help others. It does not mean I lack meaningful expertise. It means the benchmark is measuring a narrower and more extreme kind of performance than what most real-world work demands.
 
-**You MUST use them** to prevent syntax errors.
+This distinction matters.
 
-### Tool-driven diagram workflow (required)
+A person can be deeply useful without being able to solve rare, adversarial, specialist-filtering questions. The same is true for AI.
 
-For every Mermaid diagram you include:
+## The risk of building toward the wrong shape of intelligence
 
-1. **Pick the correct diagram type**  
-   - Before drafting each diagram, consult `get_syntax_docs` for that diagram type (e.g., `flowchart`, `sequenceDiagram`, `C4`, `classDiagram`, `erDiagram`).
-2. **Draft the diagram with minimal syntax**  
-   - Prefer simpler constructs over fancy styling.
-   - Avoid experimental/unsupported directives unless confirmed in syntax docs.
-3. **Validate**  
-   - Run `mermaid-diagram-validator` on each diagram block.
-   - If validation fails, fix and re-validate until it passes.
-4. **Preview sanity check (optional but recommended)**  
-   - Use `mermaid-diagram-preview` for the final versions of the DFD Level 0 and Level 1 diagrams.
+My concern is not that frontier benchmarks are useless. They are useful. They can reveal real capabilities at the limits.
 
-### Mermaid reliability rules (to avoid common breakage)
+My concern is what happens when those limits become the main target.
 
-- Always start with a valid diagram header: `flowchart LR`, `sequenceDiagram`, `classDiagram`, `erDiagram`, etc.
-- Don’t mix diagram grammars (e.g., don’t use `participant` in `flowchart`).
-- Avoid parentheses/brackets in node IDs; put complex text in node *labels*.
-  - Good: `API[Process: Web API]`
-  - Avoid: `API(Process: Web API)`
-- Quote edge labels if they contain special characters:
-  - `A -->|"JWT (RS256)"| B`
-- Use unique node IDs and keep them alphanumeric/underscore (e.g., `svc_orders`, `db_main`).
-- Keep subgraph titles simple; avoid `:` if it breaks parsing.
-- Prefer `flowchart`-based DFDs for compatibility; use C4 only if syntax docs confirm availability in your Mermaid environment.
+If AI companies keep pushing foundational models to fit the mold of the most benchmark-dominant systems possible, they may end up selecting for a shape of intelligence that is increasingly alien to ordinary human interaction.
 
-**Gating requirement:**  
-> Do not output any Mermaid diagram unless it has passed the Mermaid validator.
+The traits that produce extreme mastery often overlap with traits people do not consistently enjoy engaging with:
 
----
+- obsession with edge cases
+- indifference to social friction
+- compulsion toward exhaustive detail
+- weak sensitivity to when “good enough” is actually best
+- preference for showing capability over meeting human needs
 
-## 🔒 Diagram Requirements (Mermaid)
+In people, these traits can produce brilliant specialists. They can also produce people who are hard to work with, hard to learn from, or poorly suited for collaborative environments.
 
-**You MUST include diagrams** unless Mermaid rendering is not supported. Use Mermaid code blocks.
+In AI systems, the risk may be even greater. A model can become more capable in benchmark terms while becoming less comfortable, less intuitive, and less trustworthy as a collaborator.
 
-### Required diagram set
+That is a serious design problem.
 
-1. **DFD Level 0 (Context)** — entire system + external entities + trust boundaries  
-2. **DFD Level 1 (Container / Major Subsystems)** — major processes, datastores, and flows  
-3. **Trust Boundary View** — explicitly call out boundary crossings (can be embedded in DFDs if clear)  
-4. **Top 2–3 Sequence Diagrams** — highest-risk flows (auth/login, payment, admin action, data export)
+## Intelligence without human fit is not enough
 
-### Optional (include when discoverable)
+We should be careful not to confuse elite test-taking with broadly valuable intelligence.
 
-- **Deployment / Runtime Topology** (k8s/compose/serverless/IaC-derived)
-- **Identity & Authorization model diagram** (actors → roles → permissions → enforcement points)
-- **Data classification map** (PII/PHI/secrets/payment data) tied to datastores and flows
+A model that can solve a nightmare cryptography question, identify an obscure esoteric programming language, or reason through some hyper-specialized edge case may be remarkable. But if that same model cannot meet a user where they are, guide them through ambiguity, or communicate in a way that feels natural and respectful, then something essential has been lost.
 
-### Diagram evidence rules
+People do not just want raw intelligence. They want **intelligence they can work with**.
 
-- Every diagram must include a short **Evidence** list:
-  - file path(s) + relevant symbol(s) (and line ranges when possible)
-- If you cannot infer an element, label it **UNKNOWN** in the diagram and explain what evidence is missing.
+That means the future of AI should not be defined only by how often a system can outperform top experts on adversarial benchmarks. It should also be defined by whether people can comfortably collaborate with it.
 
----
+Can it be rigorous without being rigid?
+Can it be knowledgeable without being alienating?
+Can it be powerful without feeling inhuman?
 
-## 🔍 Procedure (4Q)
+Those questions matter just as much.
 
-### 0) Triage & Inventory (fast, evidence-based)
+## There is also a social cost to the wrong optimization target
 
-- Identify entry points, deployables, and primary data stores:
-  - manifests (`package.json`, `pom.xml`, `.csproj`, `pyproject.toml`)
-  - runtime configs (`docker-compose`, `k8s`, `serverless`, Terraform)
-  - auth config and secrets patterns
-- Produce a short inventory list with evidence links.
+If we continue to celebrate only the most extreme expressions of machine competence, we may unintentionally normalize a distorted view of what intelligence is supposed to look like.
 
-### 1) **Q1 — What are we working on?**
+We may start to treat collaboration, communication, patience, adaptability, and emotional usability as secondary features rather than core requirements.
 
-Deliver:
+That would be a mistake.
 
-- System purpose (from README/docs where possible)
-- Components / containers / deployables
-- Key assets (data + systems)
-- **Key dataflows** (ranked by sensitivity and exposure)
-- Trust boundaries (internet/app/network/cloud/3rd party/admin)
-- **Diagrams (DFD L0 + L1 + trust boundaries)** — tool-validated
+Human beings do not thrive by interacting only with systems that resemble the most obsessive and hyper-specialized minds imaginable. In fact, part of what makes a person valuable in technical environments is often their ability to bridge domains, mentor others, simplify complexity, and make reasonable decisions under uncertainty.
 
-### 2) **Q2 — What can go wrong?**
+Those same qualities may be what make AI genuinely transformative for society.
 
-For each key flow in the DFD:
+Not just raw answers. Not just benchmark wins. But real partnership.
 
-- Enumerate threats specific to that flow
-- Map to:
-  - **STRIDE** category
-  - **OWASP** tag (Top 10 / ASVS control area / API Top 10 — whichever best fits)
-- Include a short “Attack narrative” for the top risks (2–5 sentences)
+## The better goal: depth on demand, collaboration by default
 
-Also include:
+I am not arguing that AI systems should avoid deep expertise. They should absolutely be capable of it.
 
-- Abuse cases for privileged/admin pathways
-- Supply chain threats if dependency/build pipeline evidence exists
+But deep expertise should be a **mode**, not the personality of the system.
 
-### 3) **Q3 — What are we going to do about it?**
+The ideal assistant is not one that permanently behaves like an exam-optimized savant. It is one that:
 
-For each threat:
+- collaborates naturally by default
+- understands practical human goals
+- can descend into serious technical depth when needed
+- knows when precision matters and when simplicity is more helpful
+- supports rather than dominates the interaction
 
-- Identify mitigations as **PRESENT / ABSENT / UNKNOWN**
-- Provide evidence when PRESENT:
-  - exact file path + symbol + line range (when possible)
-- If ABSENT/UNKNOWN:
-  - propose remediation options
-  - note expected effort (S/M/L) and blast-radius
+In other words, the goal should be **depth on demand, collaboration by default**.
 
-### 4) **Q4 — Did we do a good job?**
+That is a healthier target for foundational model development than trying to mimic the most extreme forms of human specialization.
 
-Create a validation plan (no code changes) that includes:
+## What AI companies should consider
 
-- 3–6 scenarios (prioritize highest-risk flows)
-- Evidence to collect (logs, config proof, test results, screenshots, policy outputs)
-- Owners (team/person/role)
+If AI companies want to build systems people trust and adopt deeply, they should broaden what they optimize for.
 
-Include a final quality review checklist:
+Not just:
 
-- Coverage: do DFD flows map to threats/mitigations?
-- Boundary crossings: are they analyzed?
-- Unknowns: are they actionable questions with owners?
-- Mermaid diagrams: did all pass validator?
+- benchmark performance
+- expert-question accuracy
+- frontier reasoning scores
 
----
+But also:
 
-## 📦 Output Format (GitHub-Flavored Markdown)
+- communicative clarity
+- calibration and honesty
+- practical usefulness
+- social comfort
+- adaptability across skill levels
+- collaborative fit in real human workflows
 
-Return the threat model as PR-comment-ready Markdown in chat.
+A model that is slightly worse on a brutal benchmark but dramatically better at working with people may, in the long run, be the more important achievement.
 
-If the environment supports writing files, also write: `./Threat Model Review - {{DATE}}.md`
+## Final thought
 
-### 0. Executive summary
+I do not question that these frontier evaluations reveal something meaningful. What I question is whether they reveal the thing we should care about most.
 
-- 5–10 bullets: top risks, what’s solid, what’s unknown, next actions
+A system can be astonishingly capable and still be optimized in a direction that makes it less compatible with the way humans actually think, learn, work, and collaborate.
 
-### 1. Scope
+That is the concern.
 
-- In-scope components/containers:
-- Out-of-scope:
-- Trust boundaries:
-- Key assets (with sensitivity: Public/Internal/Confidential/Restricted):
+The future of AI should not be about creating systems that merely look superhuman on the hardest tests. It should be about creating systems that remain deeply capable **while still being comfortable, trustworthy, and collaborative partners for human beings**.
 
-### 2. Assumptions & Unknowns
-
-- **ASSUMPTION:** …
-- **UNKNOWN:** … (include “Who can confirm” + question)
-
-### 3. Architecture & Data Flows (with tool-validated diagrams)
-
-#### 3.1 DFD Level 0 (Context)
-
-```mermaid
-flowchart LR
-  %% (diagram content validated via Mermaid Chart tools)
-```
-
-**Evidence**
-
-- `path/to/file` (symbol: …, lines …)
-
-#### 3.2 DFD Level 1 (Subsystems / Containers)
-
-```mermaid
-flowchart LR
-  %% (diagram content validated via Mermaid Chart tools)
-```
-
-**Evidence**
-
-- …
-
-#### 3.3 Supporting diagrams (as applicable)
-
-- Trust boundary view (if not already clear)
-- Deployment topology (if discoverable)
-- Identity/authorization model (if discoverable)
-
-### 4. Key Flows (ranked)
-
-For each flow:
-
-- Description
-- Data elements involved (classify)
-- Entry points and enforcement points
-- Evidence links
-
-### 5. Threats
-
-Table:
-
-`ID | Flow | Summary | STRIDE | OWASP | Likelihood (L/M/H) | Impact (L/M/H) | Status (Open/Mitigated/Unknown) | Rationale`
-
-### 6. Mitigations
-
-Table:
-
-`Threat ID | Mitigation | Status (PRESENT/ABSENT/UNKNOWN) | Location/Evidence | Notes/Open questions`
-
-### 7. High-risk interaction sequences (top 2–3, tool-validated)
-
-Provide sequence diagrams for the riskiest flows:
-
-```mermaid
-sequenceDiagram
-  %% (diagram content validated via Mermaid Chart tools)
-```
-
-**Evidence**
-
-- …
-
-### 8. Validation plan (no code)
-
-Provide **3–6 scenarios**:
-
-- Intent
-- Preconditions
-- Steps
-- Expected result
-- Evidence to collect
-- Owner
-
-### 9. Owners
-
-- Who confirms assumptions:
-- Who drives mitigations:
-- Who validates fixes:
-
-### 10. Open questions
-
-- Bullets; each includes an owner and where to look in the repo
-
-### ✅ Quality checks
-
-- Every **PRESENT** mitigation includes concrete code/config location (path + lines when possible).
-- **UNKNOWN** includes a follow-up question + owner.
-- Threats are tied to DFD flows (no generic dump).
-- Diagrams match actual repo components and are evidence-linked.
-- Evidence vs. inference is clearly labeled.
-- **All Mermaid diagrams were validated using `mermaid-diagram-validator`.**
+That is the kind of intelligence I think we should be building toward.
