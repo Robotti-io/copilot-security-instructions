@@ -119,6 +119,7 @@ Prioritize these:
    - internal reverse proxy/API gateway/ingress
 
 Use clearer variants when helpful, such as:
+
 - “Can someone on the public internet open the app without VPN or corp network access?”
 - “Is there a public hostname, or only an internal/private hostname?”
 - “Does traffic go straight to the app, or through something like Front Door, Cloudflare, an API gateway, or an ingress controller?”
@@ -129,14 +130,14 @@ Ask 1–2 questions that determine what an attacker could do if they gained acce
 
 Prioritize these:
 
-4. Is the system primarily:
+1. Is the system primarily:
    - read-only
    - transactional
    - administrative
    - approval-oriented
    - control-plane / identity / security critical
 
-5. Which roles can:
+2. Which roles can:
    - administer
    - impersonate
    - bulk export
@@ -145,7 +146,7 @@ Prioritize these:
    - manage identities/permissions
    - trigger downstream actions
 
-6. Could compromise affect:
+3. Could compromise affect:
    - tenant-wide data
    - downstream systems
    - money movement
@@ -159,7 +160,7 @@ Ask 1–2 questions that distinguish **data type** from **actual sensitivity**.
 
 Prioritize these:
 
-7. What data categories are present? Distinguish between:
+1. What data categories are present? Distinguish between:
    - public/reference data
    - internal business data
    - directory/basic identity data (name, work email, title, department)
@@ -169,9 +170,9 @@ Prioritize these:
    - financial/business records
    - customer content
 
-8. Which of those are actually sensitive, regulated, confidential, or reportable if exposed, altered, or exported?
+2. Which of those are actually sensitive, regulated, confidential, or reportable if exposed, altered, or exported?
 
-9. Do **not** treat all “PII” equally. Distinguish:
+3. Do **not** treat all “PII” equally. Distinguish:
    - **Directory/basic identity data:** first/last name, work email, job title, department
    - **Standard personal data:** personal email, phone, mailing address, employee ID
    - **High-impact or regulated PII:** SSN/national ID, passport, driver’s license, payroll/tax data, financial account data, health data, recovery data, credentials, secrets
@@ -182,29 +183,31 @@ Ask **public-edge control questions only if any surface is externally reachable*
 
 If any surface is externally reachable, prioritize:
 
-10. Is traffic protected by a WAF, CDN, reverse proxy, API gateway, rate limiting, bot protection, or DDoS service? Name the product/service if known.
+1. Is traffic protected by a WAF, CDN, reverse proxy, API gateway, rate limiting, bot protection, or DDoS service? Name the product/service if known.
 
 If the application is internal-only, do **not** ask about WAF by default. Instead prioritize:
 
-11. What controls restrict internal access:
-   - segmentation
-   - VPN/ZTNA
-   - SSO
-   - MFA for admins
-   - managed devices
-   - internal ingress/proxy/gateway
-   - east-west restrictions
+1. What controls restrict internal access:
+
+- segmentation
+- VPN/ZTNA
+- SSO
+- MFA for admins
+- managed devices
+- internal ingress/proxy/gateway
+- east-west restrictions
 
 ### Stage 5 — Confirm environment isolation and uncertainty
 
-12. Which runtime environments exist and are they isolated by:
-   - network
-   - identity
-   - secrets
-   - data
-   - service accounts
+1. Which runtime environments exist and are they isolated by:
 
-13. Which answers are confirmed from architecture/deployment evidence versus operator assumption?
+- network
+- identity
+- secrets
+- data
+- service accounts
+
+1. Which answers are confirmed from architecture/deployment evidence versus operator assumption?
 
 ### Intake rules
 
@@ -394,6 +397,7 @@ For each threat:
 Use distinct concepts for **mitigation existence** and **threat closure**.
 
 #### Mitigation status
+
 Use these values in the mitigations table:
 
 - **PRESENT**
@@ -401,6 +405,7 @@ Use these values in the mitigations table:
 - **UNKNOWN**
 
 #### Threat status
+
 Use these values in the threats table:
 
 - **Mitigated** — present controls materially address the **core exploit path** and residual risk is no longer a priority concern
@@ -637,6 +642,7 @@ Table:
 `ID | Flow | Summary | STRIDE | OWASP | Likelihood (L/M/H) | Impact (L/M/H) | Status (Open/Partially Mitigated/Mitigated/Unknown) | Rationale`
 
 Add one short note below the table:
+
 - explain why any threat marked **Partially Mitigated** is not fully closed
 
 ### 6. Mitigations
@@ -646,6 +652,7 @@ Table:
 `Threat ID | Mitigation | Status (PRESENT/ABSENT/UNKNOWN) | Directness (Direct/Adjacent) | Location/Evidence | Notes/Open questions`
 
 Rules:
+
 - Mark **Directness = Direct** only if the control materially reduces that threat’s exploitability, impact, or blast radius
 - Use **Adjacent** for controls that are good hygiene or relevant to the same flow, but do not directly mitigate the threat as written
 
