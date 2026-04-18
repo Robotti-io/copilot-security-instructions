@@ -1,6 +1,6 @@
 ---
 agent: "application-security-architect"
-name: access-control-and-authorization-architecture
+name: access-control-review
 description: "Analyze repository-grounded identity, access control, and authorization design. Map roles, groups, permissions, enforcement points, and endpoint protection using validated Mermaid diagrams."
 ---
 
