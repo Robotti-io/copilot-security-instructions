@@ -139,29 +139,28 @@ The MCP server simplifies the integration of secure coding prompts into your wor
    cp .env.example .env
    ```
 
-   > The MCP server reads configuration from a `.env` file. Customize the following variables as needed:
-   >
-   > | Variable | Description | Default |
-   > | --- | --- | --- |
-   > | `server.port` | Port the MCP server listens on. | `8080` |
-   > | `server.ssl` | Whether to use ssl for express server | `false` |
-   > | `server.ssl.pfx` | Path to pfx file | `localhost.pfx` |
-   > | `server.ssl.pfx.passphrase` | Passphrase for pfx file | `PFX_PASSPHRASE` |
-   > | `server.hostname` | Hostname the server binds to. | `localhost` |
-   > | `logger.transports.console.enabled` | Enable console logging output. | `false` |
-   > | `logger.transports.console.level` | Log level for console output. | `info` |
-   > | `logger.transports.amqp.enabled` | Enable AMQP-based logging. | `false` |
-   > | `logger.transports.amqp.level` | Log level for AMQP transport. | `http` |
-   > | `logger.transports.amqp.hostname` | Hostname of the AMQP broker. | `localhost` |
-   > | `logger.transports.amqp.port` | Port for the AMQP broker. | `5672` |
-   > | `logger.transports.amqp.username` | Username for AMQP authentication. | `guest` |
-   > | `logger.transports.amqp.password` | Password for AMQP authentication. | `guest` |
-   > | `logger.transports.amqp.exchange` | Exchange name used for AMQP logging. | `logs` |
-   > | `logger.transports.amqp.vhost` | Virtual host for AMQP logging. | `/logs` |
-   > | `logger.transports.amqp.heartbeat` | Heartbeat interval in seconds. | `60` |
-   > | `logger.transports.amqp.locale` | Locale for the AMQP connection. | `en_US` |
-   > | `logger.transports.amqp.type` | AMQP exchange type. | `direct` |
-   > | `logger.transports.amqp.durable` | Whether the AMQP exchange is durable. | `false` |
+   The MCP server reads configuration from a `.env` file. Customize the following variables as needed:
+   | Variable | Description | Default |
+   | --- | --- | --- |
+   | `server.port` | Port the MCP server listens on. | `8080` |
+   | `server.ssl` | Whether to use ssl for express server | `false` |
+   | `server.ssl.pfx` | Path to pfx file | `localhost.pfx` |
+   | `server.ssl.pfx.passphrase` | Passphrase for pfx file | `PFX_PASSPHRASE` |
+   | `server.hostname` | Hostname the server binds to. | `localhost` |
+   | `logger.transports.console.enabled` | Enable console logging output. | `false` |
+   | `logger.transports.console.level` | Log level for console output. | `info` |
+   | `logger.transports.amqp.enabled` | Enable AMQP-based logging. | `false` |
+   | `logger.transports.amqp.level` | Log level for AMQP transport. | `http` |
+   | `logger.transports.amqp.hostname` | Hostname of the AMQP broker. | `localhost` |
+   | `logger.transports.amqp.port` | Port for the AMQP broker. | `5672` |
+   | `logger.transports.amqp.username` | Username for AMQP authentication. | `guest` |
+   | `logger.transports.amqp.password` | Password for AMQP authentication. | `guest` |
+   | `logger.transports.amqp.exchange` | Exchange name used for AMQP logging. | `logs` |
+   | `logger.transports.amqp.vhost` | Virtual host for AMQP logging. | `/logs` |
+   | `logger.transports.amqp.heartbeat` | Heartbeat interval in seconds. | `60` |
+   | `logger.transports.amqp.locale` | Locale for the AMQP connection. | `en_US` |
+   | `logger.transports.amqp.type` | AMQP exchange type. | `direct` |
+   | `logger.transports.amqp.durable` | Whether the AMQP exchange is durable. | `false` |
 
 3. Start the server
 
@@ -294,34 +293,6 @@ You can also get command help with:
 copilot plugin --help
 copilot plugin install --help
 ```
-
-#### Use the plugin in day-to-day work
-
-Once installed, developers can use the packaged agents and skills in any target project without copying files from this repository.
-
-Examples:
-
-- Ask the `application-security-architect` agent to threat-model a feature or repository.
-- Use the `access-control-review` skill to map roles, claims, policies, and enforcement points.
-- Use the `dependency-cve-triage` skill to evaluate a known dependency CVE against local code.
-- Use the `threat-model` skill when you need durable Markdown output plus script-validated Mermaid diagrams.
-
-Example prompts you can use in Copilot Chat or Copilot CLI:
-
-```text
-Use the application-security-architect agent to threat-model this repository.
-Use the access-control-review skill to review authorization boundaries in this codebase.
-Use the dependency-cve-triage skill to assess CVE-2024-12345 in this project.
-```
-
-#### Precedence and overrides
-
-GitHub Copilot CLI loads project and user agents or skills before plugin components.
-
-- If a project-level or user-level agent has the same ID as a plugin agent, the plugin agent is ignored.
-- If a project-level or user-level skill has the same `name` as a plugin skill, the plugin skill is ignored.
-
-This means the plugin is best used as a reusable baseline that projects can extend, rather than as a mechanism to forcibly override local customizations.
 
 ---
 
