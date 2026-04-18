@@ -140,6 +140,7 @@ The MCP server simplifies the integration of secure coding prompts into your wor
    ```
 
    The MCP server reads configuration from a `.env` file. Customize the following variables as needed:
+   
    | Variable | Description | Default |
    | --- | --- | --- |
    | `server.port` | Port the MCP server listens on. | `8080` |
