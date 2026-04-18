@@ -1,6 +1,6 @@
 {
-  "name": "threat-model",
-  "description": "Performs threat modeling using Mermaid diagrams to validate flowcharts / sequence diagrams for security review",
+  "name": "copilot-security",
+  "description": "A plugin that provides application security skills and agents to help developers with threat modeling, secure code review, and other appsec tasks.",
   "version": "1.0.0",
   "keywords": [
     "security",
