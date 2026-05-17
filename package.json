@@ -40,7 +40,7 @@
     "nodejs"
   ],
   "author": "Robotti Tech Services",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.2",
     "amqplib": "^0.10.8",
