@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-development",
+  "description": "A plugin that provides Node.js development skills and agents to assist developers in building secure and efficient applications.",
+  "version": "1.0.0",
+  "keywords": [
+    "nodejs",
+    "development",
+    "javascript",
+    "backend"
+  ],
+  "author": {
+    "name": "Robotti Tech Services"
+  },
+  "repository": "https://github.com/Robotti-io/copilot-security-instructions",
+  "license": "APACHE-2.0"
+}

@@ -14,6 +14,12 @@
       "description": "A plugin that provides application security skills and agents to help developers with threat modeling, secure code review, and other appsec tasks.",
       "version": "1.0.0",
       "source": "copilot-security"
+    },
+    {
+      "name": "nodejs-development",
+      "description": "A plugin that provides Node.js development skills and agents to assist developers in building secure and efficient applications.",
+      "version": "1.0.0",
+      "source": "nodejs-development"
     }
   ]
 }
